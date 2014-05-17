@@ -7,6 +7,11 @@
   <artifactId>yraft</artifactId>
   <version>0.1-SNAPSHOT</version>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <skipTests>false</skipTests>
+  </properties>
+
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
@@ -63,7 +68,7 @@
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.4</version>
         <executions>
-         <execution>
+          <execution>
             <id>sign-artifacts</id>
             <phase>verify</phase>
             <goals>
@@ -91,9 +96,22 @@
 
   <dependencies>
     <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty</artifactId>
-      <version>4.0.0.Alpha8</version>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.4.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-actor_2.10</artifactId>
+      <version>2.3.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>17.0</version>
+    </dependency>
+
   </dependencies>
 </project>
