@@ -1,11 +1,14 @@
 package com.github.yaoshengzhe.yraft;
 
+import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.PersistentState;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteRequest;
+import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteResponse;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
 
 import java.io.File;
@@ -30,19 +33,32 @@ public class RaftServer {
   // Volatile States
   private long commmitIndex = 0;
   private long lastApplied = 0;
+
   // Leader only
   private Map<String, Long> nextIndex = Maps.newHashMap();
   private Map<String, Long> matchIndex = Maps.newHashMap();
-
-
 
   public void asRole(Roles role) {
     this.role = role;
   }
 
+  private void onAppendEntriesRequest(AppendEntriesRequest request) {
+
+  }
+
   private void onAppendEntriesResponse(AppendEntriesResponse response) {
 
-    if (response.getTerm() >= this.currentTerm) {
+    if (response.getTerm() > this.currentTerm) {
+      onTransition(Roles.Follower);
+    }
+  }
+
+  private void onVoteRequest(VoteRequest request) {
+
+  }
+
+  private void onVoteResponse(VoteResponse response) {
+    if (response.getTerm() > this.currentTerm) {
       onTransition(Roles.Follower);
     }
   }
@@ -74,6 +90,7 @@ public class RaftServer {
 
   private void startLeaderElection() {
     VoteRequest request = VoteRequest.newBuilder()
+            .setLastLogIndex(this.lastApplied)
             .setTerm(this.currentTerm)
             .build();
     resetTimer();
@@ -84,7 +101,8 @@ public class RaftServer {
   }
 
   private void persist() throws IOException {
-    Files.write(this.state.toByteArray(), new File(""));
+    byte[] data = this.state.toByteArray();
+    Files.asByteSink(new File(""), FileWriteMode.APPEND).write(data);
   }
 
   public void run() {
