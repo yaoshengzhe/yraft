@@ -6,6 +6,8 @@ import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.PersistentState;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteRequest;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteResponse;
+import com.github.yaoshengzhe.yraft.statemachine.LocalDiskStateMachine;
+import com.github.yaoshengzhe.yraft.statemachine.StateMachine;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.io.FileWriteMode;
@@ -17,6 +19,29 @@ import java.util.List;
 import java.util.Map;
 
 public class RaftServer {
+
+  public static class Builder {
+    private StateMachine stateMachine;
+
+    public Builder setStateMachine(StateMachine stateMachine) {
+      this.stateMachine = stateMachine;
+      return this;
+    }
+
+    public RaftServer build() {
+      return new RaftServer(this);
+    }
+  }
+
+  private RaftServer(Builder builder) {
+    this.stateMachine = builder.stateMachine;
+  }
+
+  public static Builder newBuilder() {
+    return new Builder();
+  }
+
+  private StateMachine stateMachine;
 
   private Roles role = Roles.Follower;
 
@@ -100,18 +125,15 @@ public class RaftServer {
 
   }
 
-  private void persist() throws IOException {
-    byte[] data = this.state.toByteArray();
-    Files.asByteSink(new File(""), FileWriteMode.APPEND).write(data);
-  }
-
   public void run() {
     resetTimer();
   }
 
   public static void main(String[] args) {
+    RaftServer node = RaftServer.newBuilder()
+            .setStateMachine(new LocalDiskStateMachine(new File("")))
+            .build();
 
-    RaftServer node = new RaftServer();
     node.run();
   }
 }
