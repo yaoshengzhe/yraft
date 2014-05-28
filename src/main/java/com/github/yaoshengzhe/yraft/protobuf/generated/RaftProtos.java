@@ -3659,11 +3659,15 @@ public final class RaftProtos {
   public interface LogEntryOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .LogEntry.EntryType type = 1;
+    // optional uint64 term = 1;
+    boolean hasTerm();
+    long getTerm();
+    
+    // optional .LogEntry.EntryType type = 2;
     boolean hasType();
     com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType();
     
-    // optional bytes data = 2;
+    // optional bytes data = 3;
     boolean hasData();
     com.google.protobuf.ByteString getData();
   }
@@ -3768,27 +3772,38 @@ public final class RaftProtos {
     }
     
     private int bitField0_;
-    // optional .LogEntry.EntryType type = 1;
-    public static final int TYPE_FIELD_NUMBER = 1;
+    // optional uint64 term = 1;
+    public static final int TERM_FIELD_NUMBER = 1;
+    private long term_;
+    public boolean hasTerm() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public long getTerm() {
+      return term_;
+    }
+    
+    // optional .LogEntry.EntryType type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
     private com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType type_;
     public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     public com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType() {
       return type_;
     }
     
-    // optional bytes data = 2;
-    public static final int DATA_FIELD_NUMBER = 2;
+    // optional bytes data = 3;
+    public static final int DATA_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString data_;
     public boolean hasData() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
     
     private void initFields() {
+      term_ = 0L;
       type_ = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
       data_ = com.google.protobuf.ByteString.EMPTY;
     }
@@ -3805,10 +3820,13 @@ public final class RaftProtos {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
+        output.writeUInt64(1, term_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, data_);
+        output.writeEnum(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, data_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3821,11 +3839,15 @@ public final class RaftProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
+          .computeUInt64Size(1, term_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, data_);
+          .computeEnumSize(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3850,6 +3872,11 @@ public final class RaftProtos {
       com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry other = (com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry) obj;
       
       boolean result = true;
+      result = result && (hasTerm() == other.hasTerm());
+      if (hasTerm()) {
+        result = result && (getTerm()
+            == other.getTerm());
+      }
       result = result && (hasType() == other.hasType());
       if (hasType()) {
         result = result &&
@@ -3869,6 +3896,10 @@ public final class RaftProtos {
     public int hashCode() {
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasTerm()) {
+        hash = (37 * hash) + TERM_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getTerm());
+      }
       if (hasType()) {
         hash = (37 * hash) + TYPE_FIELD_NUMBER;
         hash = (53 * hash) + hashEnum(getType());
@@ -3993,10 +4024,12 @@ public final class RaftProtos {
       
       public Builder clear() {
         super.clear();
-        type_ = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
+        term_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        data_ = com.google.protobuf.ByteString.EMPTY;
+        type_ = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
         bitField0_ = (bitField0_ & ~0x00000002);
+        data_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -4038,9 +4071,13 @@ public final class RaftProtos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.type_ = type_;
+        result.term_ = term_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.data_ = data_;
         result.bitField0_ = to_bitField0_;
@@ -4059,6 +4096,9 @@ public final class RaftProtos {
       
       public Builder mergeFrom(com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry other) {
         if (other == com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance()) return this;
+        if (other.hasTerm()) {
+          setTerm(other.getTerm());
+        }
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -4097,18 +4137,23 @@ public final class RaftProtos {
               break;
             }
             case 8: {
+              bitField0_ |= 0x00000001;
+              term_ = input.readUInt64();
+              break;
+            }
+            case 16: {
               int rawValue = input.readEnum();
               com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType value = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
+                unknownFields.mergeVarintField(2, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
+                bitField0_ |= 0x00000002;
                 type_ = value;
               }
               break;
             }
-            case 18: {
-              bitField0_ |= 0x00000002;
+            case 26: {
+              bitField0_ |= 0x00000004;
               data_ = input.readBytes();
               break;
             }
@@ -4118,10 +4163,31 @@ public final class RaftProtos {
       
       private int bitField0_;
       
-      // optional .LogEntry.EntryType type = 1;
+      // optional uint64 term = 1;
+      private long term_ ;
+      public boolean hasTerm() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public long getTerm() {
+        return term_;
+      }
+      public Builder setTerm(long value) {
+        bitField0_ |= 0x00000001;
+        term_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearTerm() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        term_ = 0L;
+        onChanged();
+        return this;
+      }
+      
+      // optional .LogEntry.EntryType type = 2;
       private com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType type_ = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
       public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType() {
         return type_;
@@ -4130,22 +4196,22 @@ public final class RaftProtos {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         type_ = value;
         onChanged();
         return this;
       }
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         type_ = com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
         onChanged();
         return this;
       }
       
-      // optional bytes data = 2;
+      // optional bytes data = 3;
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
       public boolean hasData() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public com.google.protobuf.ByteString getData() {
         return data_;
@@ -4154,13 +4220,13 @@ public final class RaftProtos {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         data_ = value;
         onChanged();
         return this;
       }
       public Builder clearData() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
@@ -4237,12 +4303,12 @@ public final class RaftProtos {
       "ROR\020\377\377\377\377\377\377\377\377\377\001\022\013\n\007SUCCESS\020\000\"U\n\017Persisten" +
       "tState\022\024\n\014current_term\030\001 \001(\004\022\020\n\010vote_for" +
       "\030\002 \001(\004\022\032\n\007entries\030\003 \003(\0132\t.LogEntry\"\036\n\rCl" +
-      "usterConfig\022\r\n\005hosts\030\001 \003(\t\"z\n\010LogEntry\022!" +
-      "\n\004type\030\001 \001(\0162\023.LogEntry.EntryType\022\014\n\004dat" +
-      "a\030\002 \001(\014\"=\n\tEntryType\022\024\n\007UNKNOWN\020\377\377\377\377\377\377\377\377" +
-      "\377\001\022\n\n\006NORMAL\020\000\022\016\n\nMEMBERSHIP\020\001BE\n/com.gi",
-      "thub.yaoshengzhe.yraft.protobuf.generate" +
-      "dB\nRaftProtosH\001\210\001\001\240\001\001"
+      "usterConfig\022\r\n\005hosts\030\001 \003(\t\"\210\001\n\010LogEntry\022" +
+      "\014\n\004term\030\001 \001(\004\022!\n\004type\030\002 \001(\0162\023.LogEntry.E" +
+      "ntryType\022\014\n\004data\030\003 \001(\014\"=\n\tEntryType\022\024\n\007U" +
+      "NKNOWN\020\377\377\377\377\377\377\377\377\377\001\022\n\n\006NORMAL\020\000\022\016\n\nMEMBERS",
+      "HIP\020\001BE\n/com.github.yaoshengzhe.yraft.pr" +
+      "otobuf.generatedB\nRaftProtosH\001\210\001\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4302,7 +4368,7 @@ public final class RaftProtos {
           internal_static_LogEntry_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_LogEntry_descriptor,
-              new java.lang.String[] { "Type", "Data", },
+              new java.lang.String[] { "Term", "Type", "Data", },
               com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.class,
               com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry.Builder.class);
           return null;

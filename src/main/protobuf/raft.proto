@@ -67,8 +67,9 @@ message ClusterConfig {
 
 message LogEntry {
 
-    optional EntryType type = 1;
-    optional bytes data = 2;
+    optional uint64 term = 1;
+    optional EntryType type = 2;
+    optional bytes data = 3;
 
     enum EntryType {
         UNKNOWN = -1;

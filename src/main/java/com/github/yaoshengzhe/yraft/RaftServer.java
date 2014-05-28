@@ -6,22 +6,26 @@ import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.PersistentState;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteRequest;
 import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteResponse;
+import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision;
 import com.github.yaoshengzhe.yraft.statemachine.LocalDiskStateMachine;
 import com.github.yaoshengzhe.yraft.statemachine.StateMachine;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.io.FileWriteMode;
-import com.google.common.io.Files;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 public class RaftServer {
 
   public static class Builder {
+
+    private long candidateId;
     private StateMachine stateMachine;
+
+    public Builder(long candidateId) {
+      this.candidateId = candidateId;
+    }
 
     public Builder setStateMachine(StateMachine stateMachine) {
       this.stateMachine = stateMachine;
@@ -34,11 +38,12 @@ public class RaftServer {
   }
 
   private RaftServer(Builder builder) {
+    this.candidateId = builder.candidateId;
     this.stateMachine = builder.stateMachine;
   }
 
-  public static Builder newBuilder() {
-    return new Builder();
+  public static Builder newBuilder(long candidateId) {
+    return new Builder(candidateId);
   }
 
   private StateMachine stateMachine;
@@ -51,6 +56,9 @@ public class RaftServer {
           .setVoteFor(0)
           .build();
 
+  private long candidateId = -1;
+  private Map<Long, String> idHostLookupTable = Maps.newHashMap();
+
   private long currentTerm = 0;
   private long voteFor = -1;
   private List<LogEntry> entries = Lists.newArrayList();
@@ -62,6 +70,10 @@ public class RaftServer {
   // Leader only
   private Map<String, Long> nextIndex = Maps.newHashMap();
   private Map<String, Long> matchIndex = Maps.newHashMap();
+
+  public RaftServer(long candidateId) {
+    this.candidateId = candidateId;
+  }
 
   public void asRole(Roles role) {
     this.role = role;
@@ -85,6 +97,8 @@ public class RaftServer {
   private void onVoteResponse(VoteResponse response) {
     if (response.getTerm() > this.currentTerm) {
       onTransition(Roles.Follower);
+    } else if (this.role == Roles.Candidate && response.getVoteDecision() == VoteDecision.GRANTED) {
+
     }
   }
 
@@ -115,10 +129,20 @@ public class RaftServer {
 
   private void startLeaderElection() {
     VoteRequest request = VoteRequest.newBuilder()
-            .setLastLogIndex(this.lastApplied)
+            .setCandidateId(this.candidateId)
+            .setLastLogIndex(this.getLastLogIndex())
+            .setLastLogTerm(this.getLastLogTerm())
             .setTerm(this.currentTerm)
             .build();
     resetTimer();
+  }
+
+  private long getLastLogIndex() {
+    return this.entries.isEmpty() ? 0 : (this.entries.size() - 1);
+  }
+
+  private long getLastLogTerm() {
+    return this.entries.isEmpty() ? 0 : (this.entries.get(this.entries.size() - 1)).getTerm();
   }
 
   private void resetTimer() {
@@ -130,7 +154,7 @@ public class RaftServer {
   }
 
   public static void main(String[] args) {
-    RaftServer node = RaftServer.newBuilder()
+    RaftServer node = RaftServer.newBuilder(1)
             .setStateMachine(new LocalDiskStateMachine(new File("")))
             .build();
 
