@@ -42,9 +42,9 @@ class ServerActor(server: RaftServer) extends Actor {
 
 object ActorMain {
 
-  def newServer(commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
+  def newServer(serverId: Long, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
 
-    val server: RaftServer = RaftServer.newBuilder
+    val server: RaftServer = RaftServer.newBuilder(serverId)
       .setStateMachine(new LocalDiskStateMachine(new File(commitFilePath)))
       .setTimerService(new ScheduledExecutorTimerService(150, TimeUnit.MILLISECONDS))
       .build()
@@ -60,6 +60,6 @@ object ActorMain {
     val actorSystem = ActorSystem("YRaft")
     val commitFilePath = "~/tmp/raft"
 
-    (0 to 10).foreach(i => newServer(commitFilePath + i, actorSystem).run())
+    (0 to 10).foreach(i => newServer(i, commitFilePath + i, actorSystem).run())
   }
 }

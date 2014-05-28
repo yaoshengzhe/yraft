@@ -101,10 +101,6 @@ public class RaftServer implements Closeable {
   private Map<String, Long> nextIndex = Maps.newHashMap();
   private Map<String, Long> matchIndex = Maps.newHashMap();
 
-  public RaftServer(long candidateId) {
-    this.candidateId = candidateId;
-  }
-
   public void asRole(Roles role) {
     this.role = role;
   }
