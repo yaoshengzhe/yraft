@@ -1,8 +1,9 @@
-package com.github.yaoshengzhe.yraft;
+package org.yraft;
 
 public enum Messages {
   VoteRequest,
   VoteResponse,
   AppendEntriesRequest,
-  AppendEntriesResponse
+  AppendEntriesResponse,
+  HeartBeat
 }

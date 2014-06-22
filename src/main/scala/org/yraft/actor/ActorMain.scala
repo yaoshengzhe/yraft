@@ -1,16 +1,19 @@
-package com.github.yaoshengzhe.yraft.actor
+package org.yraft.actor
 
 import akka.actor.{Props, ActorSystem, Actor}
-import com.github.yaoshengzhe.yraft.statemachine.LocalDiskStateMachine
-import java.io.File
-import com.github.yaoshengzhe.yraft.network.ActorBasedCommunicator
-import com.github.yaoshengzhe.yraft.{Messages, RaftServer}
-import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.{AppendEntriesResponse, AppendEntriesRequest, VoteResponse, VoteRequest}
-import com.github.yaoshengzhe.yraft.exception.UnknownRaftMessageException
+import org.yraft.statemachine.LocalDiskStateMachine
+import org.yraft.network.ActorBasedCommunicator
+import org.yraft.{Raft, Messages, RaftServer}
+import org.yraft.protobuf.generated.RaftProtos.{AppendEntriesResponse, AppendEntriesRequest, VoteResponse, VoteRequest}
+import org.yraft.exception.UnknownRaftMessageException
+import org.yraft.timer.ScheduledExecutorTimerService
+
 import com.typesafe.scalalogging.slf4j.Logger
+
 import org.slf4j.LoggerFactory
-import com.github.yaoshengzhe.yraft.timer.ScheduledExecutorTimerService
+import java.io.File
 import java.util.concurrent.TimeUnit
+import scala.collection.parallel.mutable
 
 class ServerActor(server: RaftServer) extends Actor {
 
@@ -25,6 +28,8 @@ class ServerActor(server: RaftServer) extends Actor {
 
   def handle(msg: Messages, data: Array[Byte]): Unit = {
     msg match {
+      case Messages.HeartBeat =>
+        this.server.onHeartBeat(AppendEntriesRequest.parseFrom(data))
       case Messages.VoteRequest =>
         logger.debug("Received VoteRequest: " + VoteRequest.parseFrom(data))
         this.server.onVoteRequest(VoteRequest.parseFrom(data))
@@ -42,17 +47,8 @@ class ServerActor(server: RaftServer) extends Actor {
 
 object ActorMain {
 
-  def newServer(serverId: Long, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
-
-    val server: RaftServer = RaftServer.newBuilder(serverId)
-      .setStateMachine(new LocalDiskStateMachine(new File(commitFilePath)))
-      .setTimerService(new ScheduledExecutorTimerService(150, TimeUnit.MILLISECONDS))
-      .build()
-
-    val serverActor = actorSystem.actorOf(Props(classOf[ServerActor], server))
-    // Then set communicator, order is important here:)
-    server.setCommunicator(new ActorBasedCommunicator(serverActor))
-    server
+  def newServer(serverId: Int, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
+    Raft.newActorBasedServer(serverId, idServerMap, commitFilePath, actorSystem, classOf[ServerActor])
   }
 
   def main(args: Array[String]) {
@@ -60,6 +56,6 @@ object ActorMain {
     val actorSystem = ActorSystem("YRaft")
     val commitFilePath = "~/tmp/raft"
 
-    (0 to 10).foreach(i => newServer(i, commitFilePath + i, actorSystem).run())
+    (0 to 5).foreach(i => newServer(i, commitFilePath + i, actorSystem).run())
   }
 }

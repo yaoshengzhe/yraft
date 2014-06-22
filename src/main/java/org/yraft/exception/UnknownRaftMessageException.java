@@ -1,4 +1,4 @@
-package com.github.yaoshengzhe.yraft.exception;
+package org.yraft.exception;
 
 public class UnknownRaftMessageException extends Exception {
 

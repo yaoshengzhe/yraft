@@ -1,4 +1,4 @@
-package com.github.yaoshengzhe.yraft.timer;
+package org.yraft.timer;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -10,17 +10,13 @@ public class ScheduledExecutorTimerService implements TimerService {
   private Runnable timeoutTask = null;
   private ScheduledExecutorService service;
   private ScheduledFuture currentTask;
-  private final long delayInMilli;
+  private long delayInMilli;
   private boolean stopped = false;
 
-  public ScheduledExecutorTimerService(long delay, TimeUnit unit) {
+  public ScheduledExecutorTimerService(long delay, TimeUnit unit, final Runnable runnable) {
     this.delayInMilli = unit.toMillis(delay);
-  }
-
-  @Override
-  public void init(final Runnable runnable) {
     if (timeoutTask != null) {
-      throw new IllegalStateException("Cannot call TimerService.init more than once.");
+      throw new IllegalStateException("Cannot call TimerService.setRunnable more than once.");
     }
     this.timeoutTask = new Runnable() {
       @Override
@@ -40,6 +36,7 @@ public class ScheduledExecutorTimerService implements TimerService {
   private void reschedule() {
     if (this.currentTask != null) {
       this.currentTask.cancel(false);
+      this.currentTask = null;
     }
 
     if (!stopped) {
@@ -48,7 +45,22 @@ public class ScheduledExecutorTimerService implements TimerService {
   }
 
   @Override
+  public void start() {
+    if (stopped) {
+      stopped = false;
+      this.reschedule();
+    }
+  }
+  @Override
   public void stop() {
-    stopped = true;
+    if (!stopped) {
+      stopped = true;
+      this.reschedule();
+    }
+  }
+
+  @Override
+  public void setDelay(long delay, TimeUnit unit) {
+    this.delayInMilli = unit.toMillis(delay);
   }
 }

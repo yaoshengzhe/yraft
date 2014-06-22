@@ -1,4 +1,4 @@
-package com.github.yaoshengzhe.yraft.statemachine;
+package org.yraft.statemachine;
 
 public class StateMachineException extends Exception {
 

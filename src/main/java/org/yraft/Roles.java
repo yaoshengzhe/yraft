@@ -1,4 +1,4 @@
-package com.github.yaoshengzhe.yraft;
+package org.yraft;
 
 public enum Roles {
   Leader,

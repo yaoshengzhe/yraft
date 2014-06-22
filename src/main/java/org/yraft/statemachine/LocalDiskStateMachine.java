@@ -1,8 +1,8 @@
-package com.github.yaoshengzhe.yraft.statemachine;
+package org.yraft.statemachine;
 
-import com.github.yaoshengzhe.yraft.protobuf.generated.RaftProtos.LogEntry;
 import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
+import org.yraft.protobuf.generated.RaftProtos.LogEntry;
 
 import java.io.File;
 import java.io.IOException;
