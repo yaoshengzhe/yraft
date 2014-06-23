@@ -161,26 +161,22 @@ public class RaftServer implements Closeable {
 
   public void onAppendEntriesResponse(AppendEntriesResponse response) {
 
-    // If you are not the leader, lol~
+    // You are the leader, but if someone are better than you ...
+    handleLargerTerm(response.getTerm());
+
+    // If you are not the leader at this point, lol~
     if (this.role != Roles.Leader) {
       return;
     }
 
-    // You are the leader, but if someone are better than you ...
-    handleLargerTerm(response.getTerm());
-    Integer val = this.nextIndexTable.get(response.getCandidateId());
-    if (val == null) {
-      val = 1;
-    }
-
     switch (response.getStatus()) {
       case ERROR:
-        this.nextIndexTable.put(response.getCandidateId(), val - 1);
+        int index = decNextIndexFor(response.getCandidateId());
         this.communicator.sendTo(response.getCandidateId(), Messages.AppendEntriesRequest,
-                  newAppendEntriesRequest(this.entries.get(val - 1)).toByteArray());
+                  newAppendEntriesRequest(this.entries.get(index)).toByteArray());
         break;
       case SUCCESS:
-        this.nextIndexTable.put(response.getCandidateId(), val + 1);
+        incNextIndexFor(response.getCandidateId());
         break;
       default: ;
     }
@@ -196,10 +192,10 @@ public class RaftServer implements Closeable {
    */
   public void onVoteRequest(VoteRequest request) {
 
+    handleLargerTerm(request.getTerm());
+
     VoteResponse.Builder builder = VoteResponse.newBuilder()
             .setTerm(this.currentTerm).setCandidateId(this.candidateId);
-
-    handleLargerTerm(request.getTerm());
 
     if (request.getTerm() >= this.currentTerm &&
             !isLogLatestThan(request.getLastLogTerm(), request.getLastLogIndex()) &&
@@ -218,12 +214,12 @@ public class RaftServer implements Closeable {
    */
   public void onVoteResponse(VoteResponse response) {
 
+    handleLargerTerm(response.getTerm());
+
     // If you are not Candidate, better to quit...
     if (this.role != Roles.Candidate) {
       return;
     }
-
-    handleLargerTerm(response.getTerm());
 
     if (response.getVoteDecision() == VoteDecision.GRANTED) {
       this.voteGrantFrom.add(response.getCandidateId());
@@ -390,4 +386,27 @@ public class RaftServer implements Closeable {
     return request.getPrevLogIndex() <= this.getLastLogIndex() &&
            request.getPrevLogTerm() != this.entries.get(request.getPrevLogIndex()).getTerm();
   }
+
+  private int decNextIndexFor(int candidateId) {
+    Integer val = this.nextIndexTable.get(candidateId);
+    if (val == null) {
+      val = 0;
+    } else {
+      val--;
+    }
+    this.nextIndexTable.put(candidateId, val);
+    return val;
+  }
+
+  private int incNextIndexFor(int candidateId) {
+    Integer val = this.nextIndexTable.get(candidateId);
+    if (val == null) {
+      val = 0;
+    } else {
+      val++;
+    }
+    this.nextIndexTable.put(candidateId, val);
+    return val;
+  }
+
 }
