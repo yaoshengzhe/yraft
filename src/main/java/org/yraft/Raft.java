@@ -6,7 +6,8 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import org.yraft.network.ActorBasedCommunicator;
 import org.yraft.statemachine.LocalDiskStateMachine;
-import org.yraft.timer.ScheduledExecutorTimerService;
+import org.yraft.timer.RandomizedDelayTimerService;
+import org.yraft.timer.ScheduledDelayTimerService;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -20,14 +21,14 @@ public final class Raft {
             .setStateMachine(new LocalDiskStateMachine(new File(commitFilePath)))
             .build();
 
-    server.setElectionTimeoutService(new ScheduledExecutorTimerService(150, TimeUnit.MILLISECONDS, new Runnable() {
+    server.setElectionTimeoutService(new RandomizedDelayTimerService(150, TimeUnit.MILLISECONDS, new Runnable() {
       @Override
       public void run() {
         server.onTimeout();
       }
-    }));
+    }, 100));
 
-    server.setHeartbeatService(new ScheduledExecutorTimerService(100, TimeUnit.MILLISECONDS, new Runnable() {
+    server.setHeartbeatService(new ScheduledDelayTimerService(100, TimeUnit.MILLISECONDS, new Runnable() {
       @Override
       public void run() {
         server.heartbeat();

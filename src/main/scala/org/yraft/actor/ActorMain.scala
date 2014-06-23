@@ -6,7 +6,7 @@ import org.yraft.network.ActorBasedCommunicator
 import org.yraft.{Raft, Messages, RaftServer}
 import org.yraft.protobuf.generated.RaftProtos.{AppendEntriesResponse, AppendEntriesRequest, VoteResponse, VoteRequest}
 import org.yraft.exception.UnknownRaftMessageException
-import org.yraft.timer.ScheduledExecutorTimerService
+import org.yraft.timer.ScheduledDelayTimerService
 
 import com.typesafe.scalalogging.slf4j.Logger
 

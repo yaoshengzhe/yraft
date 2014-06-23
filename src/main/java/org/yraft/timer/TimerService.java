@@ -1,7 +1,5 @@
 package org.yraft.timer;
 
-import java.util.concurrent.TimeUnit;
-
 public interface TimerService {
 
   void reset();
@@ -9,7 +7,4 @@ public interface TimerService {
   void start();
 
   void stop();
-
-  void setDelay(long delay, TimeUnit unit);
-
 }

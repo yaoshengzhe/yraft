@@ -5,7 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-public class ScheduledExecutorTimerService implements TimerService {
+public class ScheduledDelayTimerService implements TimerService {
 
   private Runnable timeoutTask = null;
   private ScheduledExecutorService service;
@@ -13,7 +13,7 @@ public class ScheduledExecutorTimerService implements TimerService {
   private long delayInMilli;
   private boolean stopped = false;
 
-  public ScheduledExecutorTimerService(long delay, TimeUnit unit, final Runnable runnable) {
+  public ScheduledDelayTimerService(long delay, TimeUnit unit, final Runnable runnable) {
     this.delayInMilli = unit.toMillis(delay);
     if (timeoutTask != null) {
       throw new IllegalStateException("Cannot call TimerService.setRunnable more than once.");
@@ -59,7 +59,6 @@ public class ScheduledExecutorTimerService implements TimerService {
     }
   }
 
-  @Override
   public void setDelay(long delay, TimeUnit unit) {
     this.delayInMilli = unit.toMillis(delay);
   }
