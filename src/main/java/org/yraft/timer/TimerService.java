@@ -7,4 +7,6 @@ public interface TimerService {
   void start();
 
   void stop();
+
+  long getRecentTimeoutInMills();
 }

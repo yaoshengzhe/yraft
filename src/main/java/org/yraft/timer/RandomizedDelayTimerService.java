@@ -10,6 +10,7 @@ public class RandomizedDelayTimerService implements TimerService {
   private final ScheduledDelayTimerService delegate;
   private final int delayFactor;
   private final long delayInMilli;
+  private long recentTimeoutInMills;
   private final Random rand;
 
   public RandomizedDelayTimerService(long delay, TimeUnit unit, final Runnable runnable, int delayFactor) {
@@ -23,7 +24,8 @@ public class RandomizedDelayTimerService implements TimerService {
   @Override
   public void reset() {
     long delayedMillis = (long)((this.rand.nextInt(this.delayFactor) / 100.0) * this.delayInMilli);
-    this.delegate.setDelay(this.delayInMilli + delayedMillis, TimeUnit.MILLISECONDS);
+    this.recentTimeoutInMills = this.delayInMilli + delayedMillis;
+    this.delegate.setDelay(this.recentTimeoutInMills, TimeUnit.MILLISECONDS);
     this.delegate.reset();
   }
 
@@ -35,5 +37,10 @@ public class RandomizedDelayTimerService implements TimerService {
   @Override
   public void stop() {
     this.delegate.stop();
+  }
+
+  @Override
+  public long getRecentTimeoutInMills() {
+    return this.recentTimeoutInMills;
   }
 }

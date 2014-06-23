@@ -26,7 +26,7 @@ public class ActorBasedCommunicator implements Communicator {
     for (ActorRef server : this.serverTable.values()) {
       this.actorSystem.stop(server);
     }
-
+    // TODO: implement setMembers
     this.serverTable = new HashMap<Long, ActorRef>();
   }
 

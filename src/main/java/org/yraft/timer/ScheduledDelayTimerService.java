@@ -51,12 +51,18 @@ public class ScheduledDelayTimerService implements TimerService {
       this.reschedule();
     }
   }
+
   @Override
   public void stop() {
     if (!stopped) {
       stopped = true;
       this.reschedule();
     }
+  }
+
+  @Override
+  public long getRecentTimeoutInMills() {
+    return this.delayInMilli;
   }
 
   public void setDelay(long delay, TimeUnit unit) {

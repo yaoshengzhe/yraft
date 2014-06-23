@@ -29,7 +29,7 @@ class ServerActor(server: RaftServer) extends Actor {
   def handle(msg: Messages, data: Array[Byte]): Unit = {
     msg match {
       case Messages.HeartBeat =>
-        this.server.onHeartBeat(AppendEntriesRequest.parseFrom(data))
+        this.server.onHeartBeat()
       case Messages.VoteRequest =>
         logger.debug("Received VoteRequest: " + VoteRequest.parseFrom(data))
         this.server.onVoteRequest(VoteRequest.parseFrom(data))
@@ -48,7 +48,7 @@ class ServerActor(server: RaftServer) extends Actor {
 object ActorMain {
 
   def newServer(serverId: Int, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
-    Raft.newActorBasedServer(serverId, idServerMap, commitFilePath, actorSystem, classOf[ServerActor])
+    Raft.newActorBasedServer(serverId, commitFilePath, actorSystem, classOf[ServerActor])
   }
 
   def main(args: Array[String]) {

@@ -290,7 +290,6 @@ public class RaftServer implements Closeable {
     this.voteGrantFrom.clear();
 
     if (oldRole == Roles.Follower && newRole == Roles.Candidate) {
-      this.currentTerm++;
     } else if (oldRole == Roles.Candidate && newRole == Roles.Leader) {
       // immediately send heartbeat
       heartbeat();
@@ -310,7 +309,9 @@ public class RaftServer implements Closeable {
   private void startLeaderElection() {
 
     if (logger.isDebugEnabled()) {
-      logger.debug("Start Leader Election...");
+      logger.debug("Timeout: " + this.electionTimeoutService.getRecentTimeoutInMills() + "ms. " +
+              "Candidate: " + this.candidateId + " starts Leader Election...");
+
     }
 
     // Should never happen
@@ -318,6 +319,8 @@ public class RaftServer implements Closeable {
       throw new IllegalStateException("Your role is: " + this.role +
               "! You do not have permission to start leader election.");
     }
+
+    this.currentTerm++;
 
     VoteRequest request = VoteRequest.newBuilder()
             .setCandidateId(this.candidateId)

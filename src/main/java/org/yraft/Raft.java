@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public final class Raft {
 
   public static RaftServer newActorBasedServer(int serverId, String commitFilePath,
-                                               ActorSystem actorSystem, Class<Actor> actorClass) {
+                                               ActorSystem actorSystem, Class<? extends Actor> actorClass) {
 
     final RaftServer server = RaftServer.newBuilder(serverId)
             .setStateMachine(new LocalDiskStateMachine(new File(commitFilePath)))
