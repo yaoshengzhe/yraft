@@ -1,19 +1,16 @@
 package org.yraft.actor
 
-import akka.actor.{Props, ActorSystem, Actor}
-import org.yraft.statemachine.LocalDiskStateMachine
-import org.yraft.network.ActorBasedCommunicator
+import akka.actor.{ActorSystem, Actor}
 import org.yraft.{Raft, Messages, RaftServer}
 import org.yraft.protobuf.generated.RaftProtos.{AppendEntriesResponse, AppendEntriesRequest, VoteResponse, VoteRequest}
 import org.yraft.exception.UnknownRaftMessageException
-import org.yraft.timer.ScheduledDelayTimerService
 
 import com.typesafe.scalalogging.slf4j.Logger
 
+import java.util.{Map => JMap}
 import org.slf4j.LoggerFactory
-import java.io.File
-import java.util.concurrent.TimeUnit
-import scala.collection.parallel.mutable
+import com.google.common.collect.ImmutableMap
+import java.net.InetSocketAddress
 
 class ServerActor(server: RaftServer) extends Actor {
 
@@ -31,9 +28,10 @@ class ServerActor(server: RaftServer) extends Actor {
       case Messages.HeartBeat =>
         this.server.onHeartBeat()
       case Messages.VoteRequest =>
-        logger.debug("Received VoteRequest: " + VoteRequest.parseFrom(data))
+        logger.debug("Candidate: " + server.getCandidateId + " received VoteRequest: " + VoteRequest.parseFrom(data))
         this.server.onVoteRequest(VoteRequest.parseFrom(data))
       case Messages.VoteResponse =>
+        logger.debug("Candidate: " + server.getCandidateId + " received VoteResponse: " + VoteResponse.parseFrom(data))
         this.server.onVoteResponse(VoteResponse.parseFrom(data))
       case Messages.AppendEntriesRequest =>
         this.server.onAppendEntriesRequest(AppendEntriesRequest.parseFrom(data))
@@ -47,8 +45,8 @@ class ServerActor(server: RaftServer) extends Actor {
 
 object ActorMain {
 
-  def newServer(serverId: Int, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
-    Raft.newActorBasedServer(serverId, commitFilePath, actorSystem, classOf[ServerActor])
+  def newServer(servers: JMap[Integer, InetSocketAddress], serverId: Int, commitFilePath: String, actorSystem: ActorSystem): RaftServer = {
+    Raft.newActorBasedServer(servers, serverId, commitFilePath, actorSystem, classOf[ServerActor])
   }
 
   def main(args: Array[String]) {
@@ -56,6 +54,18 @@ object ActorMain {
     val actorSystem = ActorSystem("YRaft")
     val commitFilePath = "~/tmp/raft"
 
-    (0 to 5).foreach(i => newServer(i, commitFilePath + i, actorSystem).run())
+    var servers = ImmutableMap.builder[Integer, InetSocketAddress]
+            .put(0, InetSocketAddress.createUnresolved("localhost", 12340))
+            .put(1, InetSocketAddress.createUnresolved("localhost", 12341))
+            .put(2, InetSocketAddress.createUnresolved("localhost", 12342))
+            .put(3, InetSocketAddress.createUnresolved("localhost", 12343))
+            .put(4, InetSocketAddress.createUnresolved("localhost", 12344))
+            .put(5, InetSocketAddress.createUnresolved("localhost", 12345))
+            .build
+
+    servers = ImmutableMap.builder[Integer, InetSocketAddress]
+            .put(0, InetSocketAddress.createUnresolved("localhost", 12340))
+            .build
+    (0 to 0).foreach(i => newServer(servers, i, commitFilePath + i, actorSystem).run())
   }
 }

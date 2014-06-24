@@ -8,7 +8,7 @@
   <version>0.2-SNAPSHOT</version>
 
   <properties>
-    <scala.version>2.10.2</scala.version>
+    <scala.version>2.10.4</scala.version>
   </properties>
 
   <build>
@@ -60,6 +60,12 @@
       <groupId>com.typesafe.akka</groupId>
       <artifactId>akka-actor_2.10</artifactId>
       <version>2.3.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+        <artifactId>akka-remote_2.10</artifactId>
+        <version>2.3.2</version>
     </dependency>
 
     <dependency>

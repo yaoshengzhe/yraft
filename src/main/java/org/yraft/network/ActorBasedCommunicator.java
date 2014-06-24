@@ -1,33 +1,43 @@
 package org.yraft.network;
 
+
+import akka.actor.Actor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import com.google.common.collect.Maps;
 import org.yraft.Messages;
-import org.yraft.RaftServer;
 import scala.Tuple2;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.net.InetSocketAddress;
 import java.util.Map;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ActorBasedCommunicator implements Communicator {
 
   private final ActorRef actorRef;
   private final ActorSystem actorSystem;
-  private Map<Long, ActorRef> serverTable = Collections.EMPTY_MAP;
+  private final Class<? extends Actor> actorClass;
 
-  public ActorBasedCommunicator(ActorRef actorRef, ActorSystem actorSystem) {
+  private Map<Integer, ActorRef> serverTable = Maps.newHashMap();
+
+  public ActorBasedCommunicator(ActorRef actorRef, ActorSystem actorSystem, Class<? extends Actor> actorClass) {
     this.actorRef = actorRef;
     this.actorSystem = actorSystem;
+    this.actorClass = actorClass;
   }
 
   @Override
-  public void setMembers(Map<Long, RaftServer> servers) {
+  public void setMembers(Map<Integer, InetSocketAddress> servers) {
     for (ActorRef server : this.serverTable.values()) {
       this.actorSystem.stop(server);
     }
-    // TODO: implement setMembers
-    this.serverTable = new HashMap<Long, ActorRef>();
+    this.serverTable.clear();
+    for (Map.Entry<Integer, InetSocketAddress> entry : servers.entrySet()) {
+      ActorRef actor = actorSystem.actorSelection(toActorPath(entry.getValue())).anchor();
+      checkNotNull(actor, "Cannot create actor: " + toActorPath(entry.getValue()));
+      this.serverTable.put(entry.getKey(), actor);
+    }
   }
 
   @Override
@@ -38,7 +48,7 @@ public class ActorBasedCommunicator implements Communicator {
   }
 
   @Override
-  public void sendTo(long candidateId, Messages msg, byte[] data) {
+  public void sendTo(int candidateId, Messages msg, byte[] data) {
     ActorRef server = this.serverTable.get(candidateId);
     if (server != null) {
       this.sendTo(server, msg, data);
@@ -49,4 +59,10 @@ public class ActorBasedCommunicator implements Communicator {
     this.actorRef.tell(new Tuple2<Messages, byte[]>(msg, data), server);
   }
 
+  private String toActorPath(InetSocketAddress addr) {
+    return String.format("akka.tcp://%s@%s:%d",
+            this.actorClass.getSimpleName(),
+            addr.getHostName(),
+            addr.getPort());
+  }
 }
