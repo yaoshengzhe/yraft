@@ -19,7 +19,7 @@ public final class RaftProtos {
     boolean hasCandidateId();
     int getCandidateId();
     
-    // optional uint32 last_log_index = 3;
+    // optional int32 last_log_index = 3;
     boolean hasLastLogIndex();
     int getLastLogIndex();
     
@@ -76,7 +76,7 @@ public final class RaftProtos {
       return candidateId_;
     }
     
-    // optional uint32 last_log_index = 3;
+    // optional int32 last_log_index = 3;
     public static final int LAST_LOG_INDEX_FIELD_NUMBER = 3;
     private int lastLogIndex_;
     public boolean hasLastLogIndex() {
@@ -121,7 +121,7 @@ public final class RaftProtos {
         output.writeUInt32(2, candidateId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, lastLogIndex_);
+        output.writeInt32(3, lastLogIndex_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt64(4, lastLogTerm_);
@@ -145,7 +145,7 @@ public final class RaftProtos {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, lastLogIndex_);
+          .computeInt32Size(3, lastLogIndex_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -468,7 +468,7 @@ public final class RaftProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              lastLogIndex_ = input.readUInt32();
+              lastLogIndex_ = input.readInt32();
               break;
             }
             case 32: {
@@ -524,7 +524,7 @@ public final class RaftProtos {
         return this;
       }
       
-      // optional uint32 last_log_index = 3;
+      // optional int32 last_log_index = 3;
       private int lastLogIndex_ ;
       public boolean hasLastLogIndex() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
@@ -1172,7 +1172,7 @@ public final class RaftProtos {
     boolean hasLeaderId();
     int getLeaderId();
     
-    // optional uint32 prev_log_index = 3;
+    // optional int32 prev_log_index = 3;
     boolean hasPrevLogIndex();
     int getPrevLogIndex();
     
@@ -1243,7 +1243,7 @@ public final class RaftProtos {
       return leaderId_;
     }
     
-    // optional uint32 prev_log_index = 3;
+    // optional int32 prev_log_index = 3;
     public static final int PREV_LOG_INDEX_FIELD_NUMBER = 3;
     private int prevLogIndex_;
     public boolean hasPrevLogIndex() {
@@ -1321,7 +1321,7 @@ public final class RaftProtos {
         output.writeUInt32(2, leaderId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, prevLogIndex_);
+        output.writeInt32(3, prevLogIndex_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt64(4, prevLogTerm_);
@@ -1351,7 +1351,7 @@ public final class RaftProtos {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, prevLogIndex_);
+          .computeInt32Size(3, prevLogIndex_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1748,7 +1748,7 @@ public final class RaftProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              prevLogIndex_ = input.readUInt32();
+              prevLogIndex_ = input.readInt32();
               break;
             }
             case 32: {
@@ -1815,7 +1815,7 @@ public final class RaftProtos {
         return this;
       }
       
-      // optional uint32 prev_log_index = 3;
+      // optional int32 prev_log_index = 3;
       private int prevLogIndex_ ;
       public boolean hasPrevLogIndex() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
@@ -3703,13 +3703,13 @@ public final class RaftProtos {
     java.lang.String[] descriptorData = {
       "\n\nraft.proto\"`\n\013VoteRequest\022\014\n\004term\030\001 \001(" +
       "\004\022\024\n\014candidate_id\030\002 \001(\r\022\026\n\016last_log_inde" +
-      "x\030\003 \001(\r\022\025\n\rlast_log_term\030\004 \001(\004\"\244\001\n\014VoteR" +
+      "x\030\003 \001(\005\022\025\n\rlast_log_term\030\004 \001(\004\"\244\001\n\014VoteR" +
       "esponse\022\014\n\004term\030\001 \001(\004\022\024\n\014candidate_id\030\002 " +
       "\001(\r\0221\n\rvote_decision\030\003 \001(\0162\032.VoteRespons" +
       "e.VoteDecision\"=\n\014VoteDecision\022\024\n\007UNKNOW" +
       "N\020\377\377\377\377\377\377\377\377\377\001\022\013\n\007GRANTED\020\000\022\n\n\006DENIED\020\001\"\237\001" +
       "\n\024AppendEntriesRequest\022\014\n\004term\030\001 \001(\004\022\021\n\t" +
-      "leader_id\030\002 \001(\r\022\026\n\016prev_log_index\030\003 \001(\r\022" +
+      "leader_id\030\002 \001(\r\022\026\n\016prev_log_index\030\003 \001(\005\022" +
       "\025\n\rprev_log_term\030\004 \001(\004\022\033\n\023leader_commit_",
       "index\030\005 \001(\r\022\032\n\007entries\030\006 \003(\0132\t.LogEntry\"" +
       "\241\001\n\025AppendEntriesResponse\022\014\n\004term\030\001 \001(\004\022" +
