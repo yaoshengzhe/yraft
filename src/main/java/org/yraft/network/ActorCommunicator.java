@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ActorBasedCommunicator implements Communicator {
+public class ActorCommunicator implements Communicator {
 
   private final ActorRef actorRef;
   private final ActorSystem actorSystem;
@@ -21,7 +21,7 @@ public class ActorBasedCommunicator implements Communicator {
 
   private Map<Integer, ActorRef> serverTable = Maps.newHashMap();
 
-  public ActorBasedCommunicator(ActorRef actorRef, ActorSystem actorSystem, Class<? extends Actor> actorClass) {
+  public ActorCommunicator(ActorRef actorRef, ActorSystem actorSystem, Class<? extends Actor> actorClass) {
     this.actorRef = actorRef;
     this.actorSystem = actorSystem;
     this.actorClass = actorClass;

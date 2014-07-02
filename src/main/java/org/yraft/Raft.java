@@ -4,7 +4,7 @@ import akka.actor.Actor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import org.yraft.network.ActorBasedCommunicator;
+import org.yraft.network.ActorCommunicator;
 import org.yraft.statemachine.LocalDiskStateMachine;
 import org.yraft.timer.RandomizedDelayTimerService;
 import org.yraft.timer.ScheduledDelayTimerService;
@@ -41,7 +41,7 @@ public final class Raft {
 
     ActorRef serverActor = actorSystem.actorOf(Props.create(actorClass, server));
     // Then set communicator, order is important here:)
-    server.setCommunicator(new ActorBasedCommunicator(serverActor, actorSystem, actorClass));
+    server.setCommunicator(new ActorCommunicator(serverActor, actorSystem, actorClass));
     return server;
   }
 }
