@@ -23,21 +23,9 @@ public final class Raft {
     final RaftServer server = RaftServer.newBuilder(serverId)
             .setStateMachine(new LocalDiskStateMachine(new File(commitFilePath)))
             .setServers(servers)
+            .setElectionTimeoutService(new RandomizedDelayTimerService(150, TimeUnit.MILLISECONDS, 100))
+            .setHeartbeatService(new ScheduledDelayTimerService(100, TimeUnit.MILLISECONDS))
             .build();
-
-    server.setElectionTimeoutService(new RandomizedDelayTimerService(150, TimeUnit.MILLISECONDS, new Runnable() {
-      @Override
-      public void run() {
-        server.onTimeout();
-      }
-    }, 100));
-
-    server.setHeartbeatService(new ScheduledDelayTimerService(100, TimeUnit.MILLISECONDS, new Runnable() {
-      @Override
-      public void run() {
-        server.heartbeat();
-      }
-    }));
 
     ActorRef serverActor = actorSystem.actorOf(Props.create(actorClass, server));
     // Then set communicator, order is important here:)

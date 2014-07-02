@@ -13,7 +13,7 @@ public class ScheduledDelayTimerService implements TimerService {
   private long delayInMilli;
   private boolean stopped = false;
 
-  public ScheduledDelayTimerService(long delay, TimeUnit unit, final Runnable runnable) {
+  public ScheduledDelayTimerService(long delay, TimeUnit unit) {
     this.delayInMilli = unit.toMillis(delay);
     if (timeoutTask != null) {
       throw new IllegalStateException("Cannot call TimerService.setRunnable more than once.");
@@ -21,7 +21,6 @@ public class ScheduledDelayTimerService implements TimerService {
     this.timeoutTask = new Runnable() {
       @Override
       public void run() {
-        runnable.run();
       }
     };
     this.service = Executors.newSingleThreadScheduledExecutor();
@@ -63,6 +62,18 @@ public class ScheduledDelayTimerService implements TimerService {
   @Override
   public long getRecentTimeoutInMills() {
     return this.delayInMilli;
+  }
+
+  @Override
+  public void setRunnable(final Runnable runnable) {
+    synchronized (this.timeoutTask) {
+      this.timeoutTask = new Runnable() {
+        @Override
+        public void run() {
+          runnable.run();
+        }
+      };
+    }
   }
 
   public void setDelay(long delay, TimeUnit unit) {

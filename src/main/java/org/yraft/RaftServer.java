@@ -80,7 +80,7 @@ public class RaftServer implements Closeable {
   }
 
   private StateMachine stateMachine;
-  private TimerService electionTimeoutService;
+  private final TimerService electionTimeoutService;
   private Communicator communicator;
   private final int candidateId;
 
@@ -110,7 +110,7 @@ public class RaftServer implements Closeable {
   // (initialized to 0, increases monotonically)
   private final Map<Integer, Integer> matchIndexTable = Maps.newHashMap();
 
-  private TimerService heartBeatTimerService;
+  private final TimerService heartBeatTimerService;
 
   private RaftServer(Builder builder) {
 
@@ -123,6 +123,21 @@ public class RaftServer implements Closeable {
     this.electionTimeoutService = builder.electionTimeoutService;
     this.heartBeatTimerService = builder.heartbeatService;
     this.servers = builder.servers;
+
+    this.electionTimeoutService.setRunnable(new Runnable() {
+      @Override
+      public void run() {
+        onTimeout();
+      }
+    });
+
+    this.heartBeatTimerService.setRunnable(new Runnable() {
+      @Override
+      public void run() {
+        heartbeat();
+      }
+    });
+
   }
 
   public Roles asRole(Roles role) {
@@ -288,21 +303,13 @@ public class RaftServer implements Closeable {
     this.resetTimer();
   }
 
-  public void run() {
+  public void start() {
     resetTimer();
   }
 
   void setCommunicator(Communicator communicator) {
     this.communicator = communicator;
     this.communicator.setMembers(this.servers);
-  }
-
-  void setElectionTimeoutService(TimerService electionTimeoutService) {
-    this.electionTimeoutService = electionTimeoutService;
-  }
-
-  void setHeartbeatService(TimerService heartbeatService) {
-    this.heartBeatTimerService = heartbeatService;
   }
 
   private void onTransition(Roles newRole) {

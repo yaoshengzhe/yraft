@@ -13,9 +13,9 @@ public class RandomizedDelayTimerService implements TimerService {
   private long recentTimeoutInMills;
   private final Random rand;
 
-  public RandomizedDelayTimerService(long delay, TimeUnit unit, final Runnable runnable, int delayFactor) {
+  public RandomizedDelayTimerService(long delay, TimeUnit unit, int delayFactor) {
     checkArgument(delayFactor >= 0 && delayFactor <= 100, "delayFactor should be in range [0, 100]");
-    this.delegate = new ScheduledDelayTimerService(delay, unit, runnable);
+    this.delegate = new ScheduledDelayTimerService(delay, unit);
     this.delayInMilli = unit.toMillis(delay);
     this.delayFactor = delayFactor;
     this.rand = new Random();
@@ -42,5 +42,10 @@ public class RandomizedDelayTimerService implements TimerService {
   @Override
   public long getRecentTimeoutInMills() {
     return this.recentTimeoutInMills;
+  }
+
+  @Override
+  public void setRunnable(final Runnable runnable) {
+    this.delegate.setRunnable(runnable);
   }
 }

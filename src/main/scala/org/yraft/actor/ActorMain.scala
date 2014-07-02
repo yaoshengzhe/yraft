@@ -63,6 +63,6 @@ object ActorMain {
             .put(5, InetSocketAddress.createUnresolved("localhost", 12345))
             .build
 
-    (0 to 5).foreach(i => newServer(servers, i, commitFilePath + i, actorSystem).run())
+    (0 to 5).foreach(i => newServer(servers, i, commitFilePath + i, actorSystem).start())
   }
 }

@@ -9,4 +9,6 @@ public interface TimerService {
   void stop();
 
   long getRecentTimeoutInMills();
+
+  void setRunnable(final Runnable runnable);
 }
