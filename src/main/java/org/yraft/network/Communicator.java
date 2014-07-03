@@ -1,6 +1,7 @@
 package org.yraft.network;
 
 import org.yraft.Messages;
+import org.yraft.RaftServer;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -13,4 +14,7 @@ public interface Communicator {
 
   void sendTo(int candidateId, Messages msg, byte[] data);
 
+  void setServer(final RaftServer server);
+
+  void communicate();
 }

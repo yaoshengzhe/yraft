@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yraft.exception.UnknownRaftMessageException;
 import org.yraft.network.Communicator;
 import org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest;
 import org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse;
@@ -23,6 +24,7 @@ import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executors;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -36,12 +38,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class RaftServer implements Closeable {
 
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
   public static class Builder {
 
     private int candidateId;
     private StateMachine stateMachine;
+    private Communicator communicator;
     private TimerService electionTimeoutService;
     private TimerService heartbeatService;
     private Map<Integer, InetSocketAddress> servers;
@@ -70,6 +73,11 @@ public class RaftServer implements Closeable {
       return this;
     }
 
+    public Builder setCommunicator(Communicator communicator) {
+      this.communicator = communicator;
+      return this;
+    }
+
     public RaftServer build() {
       return new RaftServer(this);
     }
@@ -79,9 +87,9 @@ public class RaftServer implements Closeable {
     return new Builder(candidateId);
   }
 
-  private StateMachine stateMachine;
+  private final StateMachine stateMachine;
   private final TimerService electionTimeoutService;
-  private Communicator communicator;
+  private final Communicator communicator;
   private final int candidateId;
 
   private Map<Integer, InetSocketAddress> servers;
@@ -119,10 +127,15 @@ public class RaftServer implements Closeable {
             "Candidate id: " + builder.candidateId + " is not in given server addresses...");
 
     this.candidateId = builder.candidateId;
+
     this.stateMachine = builder.stateMachine;
     this.electionTimeoutService = builder.electionTimeoutService;
     this.heartBeatTimerService = builder.heartbeatService;
     this.servers = builder.servers;
+
+    this.communicator = builder.communicator;
+    this.communicator.setMembers(this.servers);
+    this.communicator.setServer(this);
 
     this.electionTimeoutService.setRunnable(new Runnable() {
       @Override
@@ -130,7 +143,6 @@ public class RaftServer implements Closeable {
         onTimeout();
       }
     });
-
     this.heartBeatTimerService.setRunnable(new Runnable() {
       @Override
       public void run() {
@@ -150,6 +162,10 @@ public class RaftServer implements Closeable {
     return this.candidateId;
   }
 
+  public Roles getRole() {
+    return this.role;
+  }
+
   /**
    * Invoked by leader to replicate log entries.
    *
@@ -166,7 +182,7 @@ public class RaftServer implements Closeable {
     handleLargerTerm(request.getTerm());
 
     if (request.getEntriesList().isEmpty()) {
-      this.onHeartBeat();
+      this.resetTimer();
     } else if (request.getTerm() < this.currentTerm) {
       this.communicator.sendTo(request.getLeaderId(), Messages.AppendEntriesResponse,
               newErrorAppendEntriesResponse().toByteArray());
@@ -235,6 +251,7 @@ public class RaftServer implements Closeable {
             !isLogLatestThan(request.getLastLogTerm(), request.getLastLogIndex()) &&
             this.voteFor == -1 || this.voteFor == request.getCandidateId()) {
       builder.setVoteDecision(VoteDecision.GRANTED);
+      this.voteFor = request.getCandidateId();
     } else {
       builder.setVoteDecision(VoteDecision.DENIED);
     }
@@ -296,20 +313,46 @@ public class RaftServer implements Closeable {
             .setLeaderCommitIndex(this.commmitIndex)
             .build();
 
-    this.communicator.broadcast(Messages.HeartBeat, request.toByteArray());
-  }
-
-  public void onHeartBeat() {
-    this.resetTimer();
+    this.communicator.broadcast(Messages.AppendEntriesRequest, request.toByteArray());
   }
 
   public void start() {
     resetTimer();
+    Executors.newSingleThreadExecutor().submit(new Runnable() {
+      @Override
+      public void run() {
+        communicator.communicate();
+      }
+    });
   }
 
-  void setCommunicator(Communicator communicator) {
-    this.communicator = communicator;
-    this.communicator.setMembers(this.servers);
+  public void receive(Messages msg, byte[] data) throws Exception {
+
+    switch (msg) {
+      case VoteRequest:
+        LOG.debug("Candidate: " + this.getCandidateId() + " received VoteRequest: " + VoteRequest.parseFrom(data));
+        this.onVoteRequest(VoteRequest.parseFrom(data));
+        break;
+      case VoteResponse:
+        LOG.debug("Candidate: " + this.getCandidateId() + " received VoteResponse: " + VoteResponse.parseFrom(data));
+        this.onVoteResponse(VoteResponse.parseFrom(data));
+        break;
+      case AppendEntriesRequest:
+        this.onAppendEntriesRequest(AppendEntriesRequest.parseFrom(data));
+        break;
+      case AppendEntriesResponse:
+        this.onAppendEntriesResponse(AppendEntriesResponse.parseFrom(data));
+      default:
+        throw new UnknownRaftMessageException("Unknown message: " + msg);
+    }
+  }
+
+  @Override
+  public String toString() {
+    return String.format("{RaftServer: id -> %d, role -> %s, term -> %d}",
+            this.candidateId,
+            this.role,
+            this.currentTerm);
   }
 
   private void onTransition(Roles newRole) {
@@ -318,8 +361,10 @@ public class RaftServer implements Closeable {
     this.voteGrantFrom.clear();
 
     if (oldRole == Roles.Follower && newRole == Roles.Candidate) {
+    } else if (oldRole == Roles.Follower && newRole == Roles.Follower) {
+
     } else if (oldRole == Roles.Candidate && newRole == Roles.Leader) {
-      logger.debug("Candidate " + this.candidateId + ", you are the leader!");
+      LOG.debug("Candidate " + this.candidateId + ", you are the leader!");
       // immediately send heartbeat
       heartbeat();
       this.heartBeatTimerService.start();
@@ -337,8 +382,8 @@ public class RaftServer implements Closeable {
 
   private void startLeaderElection() {
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Timeout: " + this.electionTimeoutService.getRecentTimeoutInMills() + "ms. " +
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Timeout: " + this.electionTimeoutService.getRecentTimeoutInMills() + "ms. " +
               "Candidate: " + this.candidateId + " starts Leader Election...");
 
     }
@@ -358,6 +403,7 @@ public class RaftServer implements Closeable {
             .setTerm(this.currentTerm)
             .build();
 
+    this.voteFor = this.getCandidateId();
     this.communicator.broadcast(Messages.VoteRequest, request.toByteArray());
     resetTimer();
   }
@@ -365,6 +411,7 @@ public class RaftServer implements Closeable {
   private void handleLargerTerm(long term) {
     if (term > this.currentTerm) {
       this.currentTerm = term;
+      this.voteFor = -1;
       this.onTransition(Roles.Follower);
     }
   }
