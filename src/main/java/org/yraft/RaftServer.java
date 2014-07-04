@@ -24,7 +24,9 @@ import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -119,6 +121,7 @@ public class RaftServer implements Closeable {
   private final Map<Integer, Integer> matchIndexTable = Maps.newHashMap();
 
   private final TimerService heartBeatTimerService;
+  private final ExecutorService communicatorService;
 
   private RaftServer(Builder builder) {
 
@@ -150,6 +153,7 @@ public class RaftServer implements Closeable {
       }
     });
 
+    this.communicatorService = Executors.newSingleThreadExecutor();
   }
 
   public Roles asRole(Roles role) {
@@ -296,6 +300,12 @@ public class RaftServer implements Closeable {
   @Override
   public void close() throws IOException {
     this.electionTimeoutService.stop();
+    this.communicatorService.shutdown();
+    try {
+      this.communicatorService.awaitTermination(10, TimeUnit.SECONDS);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public void heartbeat() {
@@ -318,7 +328,7 @@ public class RaftServer implements Closeable {
 
   public void start() {
     resetTimer();
-    Executors.newSingleThreadExecutor().submit(new Runnable() {
+    this.communicatorService.submit(new Runnable() {
       @Override
       public void run() {
         communicator.run();
