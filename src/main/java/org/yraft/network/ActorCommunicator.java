@@ -60,7 +60,7 @@ public class ActorCommunicator extends AbstractCommunicator {
   }
 
   @Override
-  public void communicate() {
+  public void run() {
 
   }
 

@@ -57,7 +57,7 @@ public class UDPCommunicator extends AbstractCommunicator {
   }
 
   @Override
-  public void communicate() {
+  public void run() {
     while (true) {
       DatagramPacket request = new DatagramPacket(this.buf.array(), this.buf.capacity());
       try {

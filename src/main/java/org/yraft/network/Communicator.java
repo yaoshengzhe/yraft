@@ -16,5 +16,5 @@ public interface Communicator {
 
   void setServer(final RaftServer server);
 
-  void communicate();
+  void run();
 }

@@ -321,7 +321,7 @@ public class RaftServer implements Closeable {
     Executors.newSingleThreadExecutor().submit(new Runnable() {
       @Override
       public void run() {
-        communicator.communicate();
+        communicator.run();
       }
     });
   }
