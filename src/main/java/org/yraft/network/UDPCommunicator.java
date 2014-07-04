@@ -20,12 +20,13 @@ public class UDPCommunicator extends AbstractCommunicator {
   private static final Logger LOG = LoggerFactory.getLogger(UDPCommunicator.class);
 
   private Map<Integer, InetSocketAddress> serverTable = Collections.EMPTY_MAP;
-  private final DatagramSocket socket;
+  private DatagramSocket socket;
+  private final SocketAddress addr;
   private final ByteBuffer buf;
   private static final int MAX_BUF_SIZE = 8192;
 
   public UDPCommunicator(SocketAddress addr) throws SocketException {
-    this.socket = new DatagramSocket(addr);
+    this.addr = addr;
     this.buf = ByteBuffer.allocate(MAX_BUF_SIZE);
   }
 
@@ -58,6 +59,12 @@ public class UDPCommunicator extends AbstractCommunicator {
 
   @Override
   public void run() {
+    try {
+      this.socket = new DatagramSocket(this.addr);
+    } catch (SocketException e) {
+      throw new RuntimeException(e);
+    }
+
     while (true) {
       DatagramPacket request = new DatagramPacket(this.buf.array(), this.buf.capacity());
       try {
@@ -68,10 +75,12 @@ public class UDPCommunicator extends AbstractCommunicator {
         buf.get(data);
         server.receive(msg, data);
 
-      } catch (IOException e) {
-        LOG.error("", e);
       } catch (Exception e) {
         LOG.error("", e);
+        if (this.socket != null) {
+          this.socket.close();
+          this.socket = null;
+        }
       }
     }
   }
