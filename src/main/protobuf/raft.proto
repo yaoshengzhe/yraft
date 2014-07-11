@@ -58,6 +58,13 @@ message AppendEntriesResponse {
     }
 }
 
+message PutRequest {
+    optional uint64 id = 1;
+    optional string host = 2;
+    optional uint32 port = 3;
+    optional bytes data = 4;
+}
+
 message ClusterConfig {
     repeated string hosts = 1;
 }
