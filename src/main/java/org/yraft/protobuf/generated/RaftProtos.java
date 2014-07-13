@@ -10,449 +10,127 @@ public final class RaftProtos {
   }
   public interface VoteRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 term = 1;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * candidate's term
+     * </pre>
+     */
     boolean hasTerm();
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * candidate's term
+     * </pre>
+     */
     long getTerm();
-    
+
     // optional uint32 candidate_id = 2;
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate requesting vote
+     * </pre>
+     */
     boolean hasCandidateId();
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate requesting vote
+     * </pre>
+     */
     int getCandidateId();
-    
+
     // optional int32 last_log_index = 3;
+    /**
+     * <code>optional int32 last_log_index = 3;</code>
+     *
+     * <pre>
+     * index of candidate's last log entry
+     * </pre>
+     */
     boolean hasLastLogIndex();
+    /**
+     * <code>optional int32 last_log_index = 3;</code>
+     *
+     * <pre>
+     * index of candidate's last log entry
+     * </pre>
+     */
     int getLastLogIndex();
-    
+
     // optional uint64 last_log_term = 4;
+    /**
+     * <code>optional uint64 last_log_term = 4;</code>
+     *
+     * <pre>
+     * term of candidate's last log entry
+     * </pre>
+     */
     boolean hasLastLogTerm();
+    /**
+     * <code>optional uint64 last_log_term = 4;</code>
+     *
+     * <pre>
+     * term of candidate's last log entry
+     * </pre>
+     */
     long getLastLogTerm();
   }
+  /**
+   * Protobuf type {@code VoteRequest}
+   */
   public static final class VoteRequest extends
       com.google.protobuf.GeneratedMessage
       implements VoteRequestOrBuilder {
     // Use VoteRequest.newBuilder() to construct.
-    private VoteRequest(Builder builder) {
+    private VoteRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private VoteRequest(boolean noInit) {}
-    
+    private VoteRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final VoteRequest defaultInstance;
     public static VoteRequest getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public VoteRequest getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional uint64 term = 1;
-    public static final int TERM_FIELD_NUMBER = 1;
-    private long term_;
-    public boolean hasTerm() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getTerm() {
-      return term_;
-    }
-    
-    // optional uint32 candidate_id = 2;
-    public static final int CANDIDATE_ID_FIELD_NUMBER = 2;
-    private int candidateId_;
-    public boolean hasCandidateId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public int getCandidateId() {
-      return candidateId_;
-    }
-    
-    // optional int32 last_log_index = 3;
-    public static final int LAST_LOG_INDEX_FIELD_NUMBER = 3;
-    private int lastLogIndex_;
-    public boolean hasLastLogIndex() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getLastLogIndex() {
-      return lastLogIndex_;
-    }
-    
-    // optional uint64 last_log_term = 4;
-    public static final int LAST_LOG_TERM_FIELD_NUMBER = 4;
-    private long lastLogTerm_;
-    public boolean hasLastLogTerm() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public long getLastLogTerm() {
-      return lastLogTerm_;
-    }
-    
-    private void initFields() {
-      term_ = 0L;
-      candidateId_ = 0;
-      lastLogIndex_ = 0;
-      lastLogTerm_ = 0L;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, candidateId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, lastLogIndex_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, lastLogTerm_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, candidateId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, lastLogIndex_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, lastLogTerm_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.VoteRequest)) {
-        return super.equals(obj);
-      }
-      org.yraft.protobuf.generated.RaftProtos.VoteRequest other = (org.yraft.protobuf.generated.RaftProtos.VoteRequest) obj;
-      
-      boolean result = true;
-      result = result && (hasTerm() == other.hasTerm());
-      if (hasTerm()) {
-        result = result && (getTerm()
-            == other.getTerm());
-      }
-      result = result && (hasCandidateId() == other.hasCandidateId());
-      if (hasCandidateId()) {
-        result = result && (getCandidateId()
-            == other.getCandidateId());
-      }
-      result = result && (hasLastLogIndex() == other.hasLastLogIndex());
-      if (hasLastLogIndex()) {
-        result = result && (getLastLogIndex()
-            == other.getLastLogIndex());
-      }
-      result = result && (hasLastLogTerm() == other.hasLastLogTerm());
-      if (hasLastLogTerm()) {
-        result = result && (getLastLogTerm()
-            == other.getLastLogTerm());
-      }
-      result = result &&
-          getUnknownFields().equals(other.getUnknownFields());
-      return result;
-    }
-    
-    @java.lang.Override
-    public int hashCode() {
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasTerm()) {
-        hash = (37 * hash) + TERM_FIELD_NUMBER;
-        hash = (53 * hash) + hashLong(getTerm());
-      }
-      if (hasCandidateId()) {
-        hash = (37 * hash) + CANDIDATE_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getCandidateId();
-      }
-      if (hasLastLogIndex()) {
-        hash = (37 * hash) + LAST_LOG_INDEX_FIELD_NUMBER;
-        hash = (53 * hash) + getLastLogIndex();
-      }
-      if (hasLastLogTerm()) {
-        hash = (37 * hash) + LAST_LOG_TERM_FIELD_NUMBER;
-        hash = (53 * hash) + hashLong(getLastLogTerm());
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      return hash;
-    }
-    
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
+    private VoteRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.VoteRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.yraft.protobuf.generated.RaftProtos.VoteRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_fieldAccessorTable;
-      }
-      
-      // Construct using org.yraft.protobuf.generated.RaftProtos.VoteRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        term_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        candidateId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        lastLogIndex_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        lastLogTerm_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.VoteRequest.getDescriptor();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteRequest getDefaultInstanceForType() {
-        return org.yraft.protobuf.generated.RaftProtos.VoteRequest.getDefaultInstance();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteRequest build() {
-        org.yraft.protobuf.generated.RaftProtos.VoteRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private org.yraft.protobuf.generated.RaftProtos.VoteRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.VoteRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteRequest buildPartial() {
-        org.yraft.protobuf.generated.RaftProtos.VoteRequest result = new org.yraft.protobuf.generated.RaftProtos.VoteRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.term_ = term_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.candidateId_ = candidateId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.lastLogIndex_ = lastLogIndex_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.lastLogTerm_ = lastLogTerm_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.yraft.protobuf.generated.RaftProtos.VoteRequest) {
-          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.VoteRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.VoteRequest other) {
-        if (other == org.yraft.protobuf.generated.RaftProtos.VoteRequest.getDefaultInstance()) return this;
-        if (other.hasTerm()) {
-          setTerm(other.getTerm());
-        }
-        if (other.hasCandidateId()) {
-          setCandidateId(other.getCandidateId());
-        }
-        if (other.hasLastLogIndex()) {
-          setLastLogIndex(other.getLastLogIndex());
-        }
-        if (other.hasLastLogTerm()) {
-          setLastLogTerm(other.getLastLogTerm());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -478,265 +156,155 @@ public final class RaftProtos {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // optional uint64 term = 1;
-      private long term_ ;
-      public boolean hasTerm() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public long getTerm() {
-        return term_;
-      }
-      public Builder setTerm(long value) {
-        bitField0_ |= 0x00000001;
-        term_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearTerm() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        term_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional uint32 candidate_id = 2;
-      private int candidateId_ ;
-      public boolean hasCandidateId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public int getCandidateId() {
-        return candidateId_;
-      }
-      public Builder setCandidateId(int value) {
-        bitField0_ |= 0x00000002;
-        candidateId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearCandidateId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        candidateId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional int32 last_log_index = 3;
-      private int lastLogIndex_ ;
-      public boolean hasLastLogIndex() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getLastLogIndex() {
-        return lastLogIndex_;
-      }
-      public Builder setLastLogIndex(int value) {
-        bitField0_ |= 0x00000004;
-        lastLogIndex_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearLastLogIndex() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        lastLogIndex_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional uint64 last_log_term = 4;
-      private long lastLogTerm_ ;
-      public boolean hasLastLogTerm() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public long getLastLogTerm() {
-        return lastLogTerm_;
-      }
-      public Builder setLastLogTerm(long value) {
-        bitField0_ |= 0x00000008;
-        lastLogTerm_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearLastLogTerm() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        lastLogTerm_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:VoteRequest)
     }
-    
-    static {
-      defaultInstance = new VoteRequest(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:VoteRequest)
-  }
-  
-  public interface VoteResponseOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional uint64 term = 1;
-    boolean hasTerm();
-    long getTerm();
-    
-    // optional uint32 candidate_id = 2;
-    boolean hasCandidateId();
-    int getCandidateId();
-    
-    // optional .VoteResponse.VoteDecision vote_decision = 3;
-    boolean hasVoteDecision();
-    org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision getVoteDecision();
-  }
-  public static final class VoteResponse extends
-      com.google.protobuf.GeneratedMessage
-      implements VoteResponseOrBuilder {
-    // Use VoteResponse.newBuilder() to construct.
-    private VoteResponse(Builder builder) {
-      super(builder);
-    }
-    private VoteResponse(boolean noInit) {}
-    
-    private static final VoteResponse defaultInstance;
-    public static VoteResponse getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public VoteResponse getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_descriptor;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_fieldAccessorTable;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.VoteRequest.class, org.yraft.protobuf.generated.RaftProtos.VoteRequest.Builder.class);
     }
-    
-    public enum VoteDecision
-        implements com.google.protobuf.ProtocolMessageEnum {
-      UNKNOWN(0, -1),
-      GRANTED(1, 0),
-      DENIED(2, 1),
-      ;
-      
-      public static final int UNKNOWN_VALUE = -1;
-      public static final int GRANTED_VALUE = 0;
-      public static final int DENIED_VALUE = 1;
-      
-      
-      public final int getNumber() { return value; }
-      
-      public static VoteDecision valueOf(int value) {
-        switch (value) {
-          case -1: return UNKNOWN;
-          case 0: return GRANTED;
-          case 1: return DENIED;
-          default: return null;
-        }
+
+    public static com.google.protobuf.Parser<VoteRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VoteRequest>() {
+      public VoteRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VoteRequest(input, extensionRegistry);
       }
-      
-      public static com.google.protobuf.Internal.EnumLiteMap<VoteDecision>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<VoteDecision>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<VoteDecision>() {
-              public VoteDecision findValueByNumber(int number) {
-                return VoteDecision.valueOf(number);
-              }
-            };
-      
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDescriptor().getEnumTypes().get(0);
-      }
-      
-      private static final VoteDecision[] VALUES = {
-        UNKNOWN, GRANTED, DENIED, 
-      };
-      
-      public static VoteDecision valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-      
-      private final int index;
-      private final int value;
-      
-      private VoteDecision(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-      
-      // @@protoc_insertion_point(enum_scope:VoteResponse.VoteDecision)
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VoteRequest> getParserForType() {
+      return PARSER;
     }
-    
+
     private int bitField0_;
     // optional uint64 term = 1;
     public static final int TERM_FIELD_NUMBER = 1;
     private long term_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * candidate's term
+     * </pre>
+     */
     public boolean hasTerm() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * candidate's term
+     * </pre>
+     */
     public long getTerm() {
       return term_;
     }
-    
+
     // optional uint32 candidate_id = 2;
     public static final int CANDIDATE_ID_FIELD_NUMBER = 2;
     private int candidateId_;
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate requesting vote
+     * </pre>
+     */
     public boolean hasCandidateId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate requesting vote
+     * </pre>
+     */
     public int getCandidateId() {
       return candidateId_;
     }
-    
-    // optional .VoteResponse.VoteDecision vote_decision = 3;
-    public static final int VOTE_DECISION_FIELD_NUMBER = 3;
-    private org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision voteDecision_;
-    public boolean hasVoteDecision() {
+
+    // optional int32 last_log_index = 3;
+    public static final int LAST_LOG_INDEX_FIELD_NUMBER = 3;
+    private int lastLogIndex_;
+    /**
+     * <code>optional int32 last_log_index = 3;</code>
+     *
+     * <pre>
+     * index of candidate's last log entry
+     * </pre>
+     */
+    public boolean hasLastLogIndex() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision getVoteDecision() {
-      return voteDecision_;
+    /**
+     * <code>optional int32 last_log_index = 3;</code>
+     *
+     * <pre>
+     * index of candidate's last log entry
+     * </pre>
+     */
+    public int getLastLogIndex() {
+      return lastLogIndex_;
     }
-    
+
+    // optional uint64 last_log_term = 4;
+    public static final int LAST_LOG_TERM_FIELD_NUMBER = 4;
+    private long lastLogTerm_;
+    /**
+     * <code>optional uint64 last_log_term = 4;</code>
+     *
+     * <pre>
+     * term of candidate's last log entry
+     * </pre>
+     */
+    public boolean hasLastLogTerm() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint64 last_log_term = 4;</code>
+     *
+     * <pre>
+     * term of candidate's last log entry
+     * </pre>
+     */
+    public long getLastLogTerm() {
+      return lastLogTerm_;
+    }
+
     private void initFields() {
       term_ = 0L;
       candidateId_ = 0;
-      voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
+      lastLogIndex_ = 0;
+      lastLogTerm_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -747,16 +315,19 @@ public final class RaftProtos {
         output.writeUInt32(2, candidateId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeEnum(3, voteDecision_.getNumber());
+        output.writeInt32(3, lastLogIndex_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, lastLogTerm_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -768,30 +339,34 @@ public final class RaftProtos {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, voteDecision_.getNumber());
+          .computeInt32Size(3, lastLogIndex_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, lastLogTerm_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.VoteResponse)) {
+      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.VoteRequest)) {
         return super.equals(obj);
       }
-      org.yraft.protobuf.generated.RaftProtos.VoteResponse other = (org.yraft.protobuf.generated.RaftProtos.VoteResponse) obj;
-      
+      org.yraft.protobuf.generated.RaftProtos.VoteRequest other = (org.yraft.protobuf.generated.RaftProtos.VoteRequest) obj;
+
       boolean result = true;
       result = result && (hasTerm() == other.hasTerm());
       if (hasTerm()) {
@@ -803,18 +378,27 @@ public final class RaftProtos {
         result = result && (getCandidateId()
             == other.getCandidateId());
       }
-      result = result && (hasVoteDecision() == other.hasVoteDecision());
-      if (hasVoteDecision()) {
-        result = result &&
-            (getVoteDecision() == other.getVoteDecision());
+      result = result && (hasLastLogIndex() == other.hasLastLogIndex());
+      if (hasLastLogIndex()) {
+        result = result && (getLastLogIndex()
+            == other.getLastLogIndex());
+      }
+      result = result && (hasLastLogTerm() == other.hasLastLogTerm());
+      if (hasLastLogTerm()) {
+        result = result && (getLastLogTerm()
+            == other.getLastLogTerm());
       }
       result = result &&
           getUnknownFields().equals(other.getUnknownFields());
       return result;
     }
-    
+
+    private int memoizedHashCode = 0;
     @java.lang.Override
     public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasTerm()) {
@@ -825,113 +409,110 @@ public final class RaftProtos {
         hash = (37 * hash) + CANDIDATE_ID_FIELD_NUMBER;
         hash = (53 * hash) + getCandidateId();
       }
-      if (hasVoteDecision()) {
-        hash = (37 * hash) + VOTE_DECISION_FIELD_NUMBER;
-        hash = (53 * hash) + hashEnum(getVoteDecision());
+      if (hasLastLogIndex()) {
+        hash = (37 * hash) + LAST_LOG_INDEX_FIELD_NUMBER;
+        hash = (53 * hash) + getLastLogIndex();
+      }
+      if (hasLastLogTerm()) {
+        hash = (37 * hash) + LAST_LOG_TERM_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getLastLogTerm());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
       return hash;
     }
-    
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(byte[] data)
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(java.io.InputStream input)
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseDelimitedFrom(java.io.InputStream input)
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseDelimitedFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.VoteRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.VoteResponse prototype) {
+    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.VoteRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code VoteRequest}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.yraft.protobuf.generated.RaftProtos.VoteResponseOrBuilder {
+       implements org.yraft.protobuf.generated.RaftProtos.VoteRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_descriptor;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_fieldAccessorTable;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.VoteRequest.class, org.yraft.protobuf.generated.RaftProtos.VoteRequest.Builder.class);
       }
-      
-      // Construct using org.yraft.protobuf.generated.RaftProtos.VoteResponse.newBuilder()
+
+      // Construct using org.yraft.protobuf.generated.RaftProtos.VoteRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -942,51 +523,43 @@ public final class RaftProtos {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         term_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         candidateId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
+        lastLogIndex_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        lastLogTerm_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDescriptor();
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteRequest_descriptor;
       }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteResponse getDefaultInstanceForType() {
-        return org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDefaultInstance();
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteRequest getDefaultInstanceForType() {
+        return org.yraft.protobuf.generated.RaftProtos.VoteRequest.getDefaultInstance();
       }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteResponse build() {
-        org.yraft.protobuf.generated.RaftProtos.VoteResponse result = buildPartial();
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteRequest build() {
+        org.yraft.protobuf.generated.RaftProtos.VoteRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-      
-      private org.yraft.protobuf.generated.RaftProtos.VoteResponse buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.VoteResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.VoteResponse buildPartial() {
-        org.yraft.protobuf.generated.RaftProtos.VoteResponse result = new org.yraft.protobuf.generated.RaftProtos.VoteResponse(this);
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteRequest buildPartial() {
+        org.yraft.protobuf.generated.RaftProtos.VoteRequest result = new org.yraft.protobuf.generated.RaftProtos.VoteRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1000,60 +573,378 @@ public final class RaftProtos {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.voteDecision_ = voteDecision_;
+        result.lastLogIndex_ = lastLogIndex_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.lastLogTerm_ = lastLogTerm_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.yraft.protobuf.generated.RaftProtos.VoteResponse) {
-          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.VoteResponse)other);
+        if (other instanceof org.yraft.protobuf.generated.RaftProtos.VoteRequest) {
+          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.VoteRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-      
-      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.VoteResponse other) {
-        if (other == org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDefaultInstance()) return this;
+
+      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.VoteRequest other) {
+        if (other == org.yraft.protobuf.generated.RaftProtos.VoteRequest.getDefaultInstance()) return this;
         if (other.hasTerm()) {
           setTerm(other.getTerm());
         }
         if (other.hasCandidateId()) {
           setCandidateId(other.getCandidateId());
         }
-        if (other.hasVoteDecision()) {
-          setVoteDecision(other.getVoteDecision());
+        if (other.hasLastLogIndex()) {
+          setLastLogIndex(other.getLastLogIndex());
+        }
+        if (other.hasLastLogTerm()) {
+          setLastLogTerm(other.getLastLogTerm());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        org.yraft.protobuf.generated.RaftProtos.VoteRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.VoteRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint64 term = 1;
+      private long term_ ;
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * candidate's term
+       * </pre>
+       */
+      public boolean hasTerm() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * candidate's term
+       * </pre>
+       */
+      public long getTerm() {
+        return term_;
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * candidate's term
+       * </pre>
+       */
+      public Builder setTerm(long value) {
+        bitField0_ |= 0x00000001;
+        term_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * candidate's term
+       * </pre>
+       */
+      public Builder clearTerm() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        term_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 candidate_id = 2;
+      private int candidateId_ ;
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate requesting vote
+       * </pre>
+       */
+      public boolean hasCandidateId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate requesting vote
+       * </pre>
+       */
+      public int getCandidateId() {
+        return candidateId_;
+      }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate requesting vote
+       * </pre>
+       */
+      public Builder setCandidateId(int value) {
+        bitField0_ |= 0x00000002;
+        candidateId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate requesting vote
+       * </pre>
+       */
+      public Builder clearCandidateId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        candidateId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 last_log_index = 3;
+      private int lastLogIndex_ ;
+      /**
+       * <code>optional int32 last_log_index = 3;</code>
+       *
+       * <pre>
+       * index of candidate's last log entry
+       * </pre>
+       */
+      public boolean hasLastLogIndex() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 last_log_index = 3;</code>
+       *
+       * <pre>
+       * index of candidate's last log entry
+       * </pre>
+       */
+      public int getLastLogIndex() {
+        return lastLogIndex_;
+      }
+      /**
+       * <code>optional int32 last_log_index = 3;</code>
+       *
+       * <pre>
+       * index of candidate's last log entry
+       * </pre>
+       */
+      public Builder setLastLogIndex(int value) {
+        bitField0_ |= 0x00000004;
+        lastLogIndex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 last_log_index = 3;</code>
+       *
+       * <pre>
+       * index of candidate's last log entry
+       * </pre>
+       */
+      public Builder clearLastLogIndex() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        lastLogIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 last_log_term = 4;
+      private long lastLogTerm_ ;
+      /**
+       * <code>optional uint64 last_log_term = 4;</code>
+       *
+       * <pre>
+       * term of candidate's last log entry
+       * </pre>
+       */
+      public boolean hasLastLogTerm() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint64 last_log_term = 4;</code>
+       *
+       * <pre>
+       * term of candidate's last log entry
+       * </pre>
+       */
+      public long getLastLogTerm() {
+        return lastLogTerm_;
+      }
+      /**
+       * <code>optional uint64 last_log_term = 4;</code>
+       *
+       * <pre>
+       * term of candidate's last log entry
+       * </pre>
+       */
+      public Builder setLastLogTerm(long value) {
+        bitField0_ |= 0x00000008;
+        lastLogTerm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 last_log_term = 4;</code>
+       *
+       * <pre>
+       * term of candidate's last log entry
+       * </pre>
+       */
+      public Builder clearLastLogTerm() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        lastLogTerm_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:VoteRequest)
+    }
+
+    static {
+      defaultInstance = new VoteRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:VoteRequest)
+  }
+
+  public interface VoteResponseOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint64 term = 1;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for candidate to update itself
+     * </pre>
+     */
+    boolean hasTerm();
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for candidate to update itself
+     * </pre>
+     */
+    long getTerm();
+
+    // optional uint32 candidate_id = 2;
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate responsing vote
+     * </pre>
+     */
+    boolean hasCandidateId();
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate responsing vote
+     * </pre>
+     */
+    int getCandidateId();
+
+    // optional .VoteResponse.VoteDecision vote_decision = 3;
+    /**
+     * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+     *
+     * <pre>
+     * GRANTED means candidate received vote
+     * </pre>
+     */
+    boolean hasVoteDecision();
+    /**
+     * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+     *
+     * <pre>
+     * GRANTED means candidate received vote
+     * </pre>
+     */
+    org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision getVoteDecision();
+  }
+  /**
+   * Protobuf type {@code VoteResponse}
+   */
+  public static final class VoteResponse extends
+      com.google.protobuf.GeneratedMessage
+      implements VoteResponseOrBuilder {
+    // Use VoteResponse.newBuilder() to construct.
+    private VoteResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private VoteResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final VoteResponse defaultInstance;
+    public static VoteResponse getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public VoteResponse getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VoteResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -1080,60 +971,651 @@ public final class RaftProtos {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.VoteResponse.class, org.yraft.protobuf.generated.RaftProtos.VoteResponse.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<VoteResponse> PARSER =
+        new com.google.protobuf.AbstractParser<VoteResponse>() {
+      public VoteResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VoteResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VoteResponse> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code VoteResponse.VoteDecision}
+     */
+    public enum VoteDecision
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN = -1;</code>
+       */
+      UNKNOWN(0, -1),
+      /**
+       * <code>GRANTED = 0;</code>
+       */
+      GRANTED(1, 0),
+      /**
+       * <code>DENIED = 1;</code>
+       */
+      DENIED(2, 1),
+      ;
+
+      /**
+       * <code>UNKNOWN = -1;</code>
+       */
+      public static final int UNKNOWN_VALUE = -1;
+      /**
+       * <code>GRANTED = 0;</code>
+       */
+      public static final int GRANTED_VALUE = 0;
+      /**
+       * <code>DENIED = 1;</code>
+       */
+      public static final int DENIED_VALUE = 1;
+
+
+      public final int getNumber() { return value; }
+
+      public static VoteDecision valueOf(int value) {
+        switch (value) {
+          case -1: return UNKNOWN;
+          case 0: return GRANTED;
+          case 1: return DENIED;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<VoteDecision>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<VoteDecision>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<VoteDecision>() {
+              public VoteDecision findValueByNumber(int number) {
+                return VoteDecision.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final VoteDecision[] VALUES = values();
+
+      public static VoteDecision valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private VoteDecision(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:VoteResponse.VoteDecision)
+    }
+
+    private int bitField0_;
+    // optional uint64 term = 1;
+    public static final int TERM_FIELD_NUMBER = 1;
+    private long term_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for candidate to update itself
+     * </pre>
+     */
+    public boolean hasTerm() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for candidate to update itself
+     * </pre>
+     */
+    public long getTerm() {
+      return term_;
+    }
+
+    // optional uint32 candidate_id = 2;
+    public static final int CANDIDATE_ID_FIELD_NUMBER = 2;
+    private int candidateId_;
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate responsing vote
+     * </pre>
+     */
+    public boolean hasCandidateId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint32 candidate_id = 2;</code>
+     *
+     * <pre>
+     * candidate responsing vote
+     * </pre>
+     */
+    public int getCandidateId() {
+      return candidateId_;
+    }
+
+    // optional .VoteResponse.VoteDecision vote_decision = 3;
+    public static final int VOTE_DECISION_FIELD_NUMBER = 3;
+    private org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision voteDecision_;
+    /**
+     * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+     *
+     * <pre>
+     * GRANTED means candidate received vote
+     * </pre>
+     */
+    public boolean hasVoteDecision() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+     *
+     * <pre>
+     * GRANTED means candidate received vote
+     * </pre>
+     */
+    public org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision getVoteDecision() {
+      return voteDecision_;
+    }
+
+    private void initFields() {
+      term_ = 0L;
+      candidateId_ = 0;
+      voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, term_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, candidateId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(3, voteDecision_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, term_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, candidateId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, voteDecision_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.VoteResponse)) {
+        return super.equals(obj);
+      }
+      org.yraft.protobuf.generated.RaftProtos.VoteResponse other = (org.yraft.protobuf.generated.RaftProtos.VoteResponse) obj;
+
+      boolean result = true;
+      result = result && (hasTerm() == other.hasTerm());
+      if (hasTerm()) {
+        result = result && (getTerm()
+            == other.getTerm());
+      }
+      result = result && (hasCandidateId() == other.hasCandidateId());
+      if (hasCandidateId()) {
+        result = result && (getCandidateId()
+            == other.getCandidateId());
+      }
+      result = result && (hasVoteDecision() == other.hasVoteDecision());
+      if (hasVoteDecision()) {
+        result = result &&
+            (getVoteDecision() == other.getVoteDecision());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    private int memoizedHashCode = 0;
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasTerm()) {
+        hash = (37 * hash) + TERM_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getTerm());
+      }
+      if (hasCandidateId()) {
+        hash = (37 * hash) + CANDIDATE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getCandidateId();
+      }
+      if (hasVoteDecision()) {
+        hash = (37 * hash) + VOTE_DECISION_FIELD_NUMBER;
+        hash = (53 * hash) + hashEnum(getVoteDecision());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.VoteResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.VoteResponse prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code VoteResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.yraft.protobuf.generated.RaftProtos.VoteResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.VoteResponse.class, org.yraft.protobuf.generated.RaftProtos.VoteResponse.Builder.class);
+      }
+
+      // Construct using org.yraft.protobuf.generated.RaftProtos.VoteResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        term_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        candidateId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_VoteResponse_descriptor;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteResponse getDefaultInstanceForType() {
+        return org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDefaultInstance();
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteResponse build() {
+        org.yraft.protobuf.generated.RaftProtos.VoteResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.VoteResponse buildPartial() {
+        org.yraft.protobuf.generated.RaftProtos.VoteResponse result = new org.yraft.protobuf.generated.RaftProtos.VoteResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.term_ = term_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.candidateId_ = candidateId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.voteDecision_ = voteDecision_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.yraft.protobuf.generated.RaftProtos.VoteResponse) {
+          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.VoteResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.VoteResponse other) {
+        if (other == org.yraft.protobuf.generated.RaftProtos.VoteResponse.getDefaultInstance()) return this;
+        if (other.hasTerm()) {
+          setTerm(other.getTerm());
+        }
+        if (other.hasCandidateId()) {
+          setCandidateId(other.getCandidateId());
+        }
+        if (other.hasVoteDecision()) {
+          setVoteDecision(other.getVoteDecision());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.yraft.protobuf.generated.RaftProtos.VoteResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.VoteResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional uint64 term = 1;
       private long term_ ;
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for candidate to update itself
+       * </pre>
+       */
       public boolean hasTerm() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for candidate to update itself
+       * </pre>
+       */
       public long getTerm() {
         return term_;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for candidate to update itself
+       * </pre>
+       */
       public Builder setTerm(long value) {
         bitField0_ |= 0x00000001;
         term_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for candidate to update itself
+       * </pre>
+       */
       public Builder clearTerm() {
         bitField0_ = (bitField0_ & ~0x00000001);
         term_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint32 candidate_id = 2;
       private int candidateId_ ;
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate responsing vote
+       * </pre>
+       */
       public boolean hasCandidateId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate responsing vote
+       * </pre>
+       */
       public int getCandidateId() {
         return candidateId_;
       }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate responsing vote
+       * </pre>
+       */
       public Builder setCandidateId(int value) {
         bitField0_ |= 0x00000002;
         candidateId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint32 candidate_id = 2;</code>
+       *
+       * <pre>
+       * candidate responsing vote
+       * </pre>
+       */
       public Builder clearCandidateId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         candidateId_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional .VoteResponse.VoteDecision vote_decision = 3;
       private org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
+      /**
+       * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+       *
+       * <pre>
+       * GRANTED means candidate received vote
+       * </pre>
+       */
       public boolean hasVoteDecision() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+       *
+       * <pre>
+       * GRANTED means candidate received vote
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision getVoteDecision() {
         return voteDecision_;
       }
+      /**
+       * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+       *
+       * <pre>
+       * GRANTED means candidate received vote
+       * </pre>
+       */
       public Builder setVoteDecision(org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision value) {
         if (value == null) {
           throw new NullPointerException();
@@ -1143,157 +1625,472 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .VoteResponse.VoteDecision vote_decision = 3;</code>
+       *
+       * <pre>
+       * GRANTED means candidate received vote
+       * </pre>
+       */
       public Builder clearVoteDecision() {
         bitField0_ = (bitField0_ & ~0x00000004);
         voteDecision_ = org.yraft.protobuf.generated.RaftProtos.VoteResponse.VoteDecision.UNKNOWN;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:VoteResponse)
     }
-    
+
     static {
       defaultInstance = new VoteResponse(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:VoteResponse)
   }
-  
+
   public interface AppendEntriesRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 term = 1;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * leader's term
+     * </pre>
+     */
     boolean hasTerm();
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * leader's term
+     * </pre>
+     */
     long getTerm();
-    
+
     // optional uint32 leader_id = 2;
+    /**
+     * <code>optional uint32 leader_id = 2;</code>
+     *
+     * <pre>
+     * leader's id so follower can redirect clients
+     * </pre>
+     */
     boolean hasLeaderId();
+    /**
+     * <code>optional uint32 leader_id = 2;</code>
+     *
+     * <pre>
+     * leader's id so follower can redirect clients
+     * </pre>
+     */
     int getLeaderId();
-    
+
     // optional int32 prev_log_index = 3;
+    /**
+     * <code>optional int32 prev_log_index = 3;</code>
+     *
+     * <pre>
+     * index of log entry immediately preceding new ones
+     * </pre>
+     */
     boolean hasPrevLogIndex();
+    /**
+     * <code>optional int32 prev_log_index = 3;</code>
+     *
+     * <pre>
+     * index of log entry immediately preceding new ones
+     * </pre>
+     */
     int getPrevLogIndex();
-    
+
     // optional uint64 prev_log_term = 4;
+    /**
+     * <code>optional uint64 prev_log_term = 4;</code>
+     *
+     * <pre>
+     * term of prevLogIndex entry
+     * </pre>
+     */
     boolean hasPrevLogTerm();
+    /**
+     * <code>optional uint64 prev_log_term = 4;</code>
+     *
+     * <pre>
+     * term of prevLogIndex entry
+     * </pre>
+     */
     long getPrevLogTerm();
-    
+
     // optional uint32 leader_commit_index = 5;
+    /**
+     * <code>optional uint32 leader_commit_index = 5;</code>
+     *
+     * <pre>
+     * leader’s commitIndex
+     * </pre>
+     */
     boolean hasLeaderCommitIndex();
+    /**
+     * <code>optional uint32 leader_commit_index = 5;</code>
+     *
+     * <pre>
+     * leader’s commitIndex
+     * </pre>
+     */
     int getLeaderCommitIndex();
-    
+
     // repeated .LogEntry entries = 6;
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry> 
         getEntriesList();
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     org.yraft.protobuf.generated.RaftProtos.LogEntry getEntries(int index);
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     int getEntriesCount();
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     java.util.List<? extends org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder> 
         getEntriesOrBuilderList();
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder getEntriesOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code AppendEntriesRequest}
+   */
   public static final class AppendEntriesRequest extends
       com.google.protobuf.GeneratedMessage
       implements AppendEntriesRequestOrBuilder {
     // Use AppendEntriesRequest.newBuilder() to construct.
-    private AppendEntriesRequest(Builder builder) {
+    private AppendEntriesRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private AppendEntriesRequest(boolean noInit) {}
-    
+    private AppendEntriesRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final AppendEntriesRequest defaultInstance;
     public static AppendEntriesRequest getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public AppendEntriesRequest getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AppendEntriesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              term_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              leaderId_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              prevLogIndex_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              prevLogTerm_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              leaderCommitIndex_ = input.readUInt32();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                entries_ = new java.util.ArrayList<org.yraft.protobuf.generated.RaftProtos.LogEntry>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              entries_.add(input.readMessage(org.yraft.protobuf.generated.RaftProtos.LogEntry.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          entries_ = java.util.Collections.unmodifiableList(entries_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_fieldAccessorTable;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.class, org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<AppendEntriesRequest> PARSER =
+        new com.google.protobuf.AbstractParser<AppendEntriesRequest>() {
+      public AppendEntriesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AppendEntriesRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AppendEntriesRequest> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional uint64 term = 1;
     public static final int TERM_FIELD_NUMBER = 1;
     private long term_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * leader's term
+     * </pre>
+     */
     public boolean hasTerm() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * leader's term
+     * </pre>
+     */
     public long getTerm() {
       return term_;
     }
-    
+
     // optional uint32 leader_id = 2;
     public static final int LEADER_ID_FIELD_NUMBER = 2;
     private int leaderId_;
+    /**
+     * <code>optional uint32 leader_id = 2;</code>
+     *
+     * <pre>
+     * leader's id so follower can redirect clients
+     * </pre>
+     */
     public boolean hasLeaderId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional uint32 leader_id = 2;</code>
+     *
+     * <pre>
+     * leader's id so follower can redirect clients
+     * </pre>
+     */
     public int getLeaderId() {
       return leaderId_;
     }
-    
+
     // optional int32 prev_log_index = 3;
     public static final int PREV_LOG_INDEX_FIELD_NUMBER = 3;
     private int prevLogIndex_;
+    /**
+     * <code>optional int32 prev_log_index = 3;</code>
+     *
+     * <pre>
+     * index of log entry immediately preceding new ones
+     * </pre>
+     */
     public boolean hasPrevLogIndex() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional int32 prev_log_index = 3;</code>
+     *
+     * <pre>
+     * index of log entry immediately preceding new ones
+     * </pre>
+     */
     public int getPrevLogIndex() {
       return prevLogIndex_;
     }
-    
+
     // optional uint64 prev_log_term = 4;
     public static final int PREV_LOG_TERM_FIELD_NUMBER = 4;
     private long prevLogTerm_;
+    /**
+     * <code>optional uint64 prev_log_term = 4;</code>
+     *
+     * <pre>
+     * term of prevLogIndex entry
+     * </pre>
+     */
     public boolean hasPrevLogTerm() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional uint64 prev_log_term = 4;</code>
+     *
+     * <pre>
+     * term of prevLogIndex entry
+     * </pre>
+     */
     public long getPrevLogTerm() {
       return prevLogTerm_;
     }
-    
+
     // optional uint32 leader_commit_index = 5;
     public static final int LEADER_COMMIT_INDEX_FIELD_NUMBER = 5;
     private int leaderCommitIndex_;
+    /**
+     * <code>optional uint32 leader_commit_index = 5;</code>
+     *
+     * <pre>
+     * leader’s commitIndex
+     * </pre>
+     */
     public boolean hasLeaderCommitIndex() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional uint32 leader_commit_index = 5;</code>
+     *
+     * <pre>
+     * leader’s commitIndex
+     * </pre>
+     */
     public int getLeaderCommitIndex() {
       return leaderCommitIndex_;
     }
-    
+
     // repeated .LogEntry entries = 6;
     public static final int ENTRIES_FIELD_NUMBER = 6;
     private java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry> entries_;
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     public java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry> getEntriesList() {
       return entries_;
     }
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     public java.util.List<? extends org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder> 
         getEntriesOrBuilderList() {
       return entries_;
     }
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     public int getEntriesCount() {
       return entries_.size();
     }
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     public org.yraft.protobuf.generated.RaftProtos.LogEntry getEntries(int index) {
       return entries_.get(index);
     }
+    /**
+     * <code>repeated .LogEntry entries = 6;</code>
+     *
+     * <pre>
+     * log entries to store (empty for heartbeat; may send more than one for efficiency)
+     * </pre>
+     */
     public org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder getEntriesOrBuilder(
         int index) {
       return entries_.get(index);
     }
-    
+
     private void initFields() {
       term_ = 0L;
       leaderId_ = 0;
@@ -1306,11 +2103,11 @@ public final class RaftProtos {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1334,12 +2131,12 @@ public final class RaftProtos {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1369,14 +2166,14 @@ public final class RaftProtos {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1386,7 +2183,7 @@ public final class RaftProtos {
         return super.equals(obj);
       }
       org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest other = (org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest) obj;
-      
+
       boolean result = true;
       result = result && (hasTerm() == other.hasTerm());
       if (hasTerm()) {
@@ -1419,9 +2216,13 @@ public final class RaftProtos {
           getUnknownFields().equals(other.getUnknownFields());
       return result;
     }
-    
+
+    private int memoizedHashCode = 0;
     @java.lang.Override
     public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasTerm()) {
@@ -1449,89 +2250,79 @@ public final class RaftProtos {
         hash = (53 * hash) + getEntriesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
       return hash;
     }
-    
+
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code AppendEntriesRequest}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequestOrBuilder {
@@ -1539,18 +2330,21 @@ public final class RaftProtos {
           getDescriptor() {
         return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_fieldAccessorTable;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.class, org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.Builder.class);
       }
-      
+
       // Construct using org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1562,7 +2356,7 @@ public final class RaftProtos {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         term_ = 0L;
@@ -1583,20 +2377,20 @@ public final class RaftProtos {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.getDescriptor();
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesRequest_descriptor;
       }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest getDefaultInstanceForType() {
         return org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.getDefaultInstance();
       }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest build() {
         org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest result = buildPartial();
         if (!result.isInitialized()) {
@@ -1604,17 +2398,7 @@ public final class RaftProtos {
         }
         return result;
       }
-      
-      private org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest buildPartial() {
         org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest result = new org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest(this);
         int from_bitField0_ = bitField0_;
@@ -1652,7 +2436,7 @@ public final class RaftProtos {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest) {
           return mergeFrom((org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest)other);
@@ -1661,7 +2445,7 @@ public final class RaftProtos {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest other) {
         if (other == org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.getDefaultInstance()) return this;
         if (other.hasTerm()) {
@@ -1708,176 +2492,275 @@ public final class RaftProtos {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              term_ = input.readUInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              leaderId_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              prevLogIndex_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              prevLogTerm_ = input.readUInt64();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              leaderCommitIndex_ = input.readUInt32();
-              break;
-            }
-            case 50: {
-              org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder subBuilder = org.yraft.protobuf.generated.RaftProtos.LogEntry.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addEntries(subBuilder.buildPartial());
-              break;
-            }
+        org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional uint64 term = 1;
       private long term_ ;
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * leader's term
+       * </pre>
+       */
       public boolean hasTerm() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * leader's term
+       * </pre>
+       */
       public long getTerm() {
         return term_;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * leader's term
+       * </pre>
+       */
       public Builder setTerm(long value) {
         bitField0_ |= 0x00000001;
         term_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * leader's term
+       * </pre>
+       */
       public Builder clearTerm() {
         bitField0_ = (bitField0_ & ~0x00000001);
         term_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint32 leader_id = 2;
       private int leaderId_ ;
+      /**
+       * <code>optional uint32 leader_id = 2;</code>
+       *
+       * <pre>
+       * leader's id so follower can redirect clients
+       * </pre>
+       */
       public boolean hasLeaderId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional uint32 leader_id = 2;</code>
+       *
+       * <pre>
+       * leader's id so follower can redirect clients
+       * </pre>
+       */
       public int getLeaderId() {
         return leaderId_;
       }
+      /**
+       * <code>optional uint32 leader_id = 2;</code>
+       *
+       * <pre>
+       * leader's id so follower can redirect clients
+       * </pre>
+       */
       public Builder setLeaderId(int value) {
         bitField0_ |= 0x00000002;
         leaderId_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint32 leader_id = 2;</code>
+       *
+       * <pre>
+       * leader's id so follower can redirect clients
+       * </pre>
+       */
       public Builder clearLeaderId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         leaderId_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional int32 prev_log_index = 3;
       private int prevLogIndex_ ;
+      /**
+       * <code>optional int32 prev_log_index = 3;</code>
+       *
+       * <pre>
+       * index of log entry immediately preceding new ones
+       * </pre>
+       */
       public boolean hasPrevLogIndex() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional int32 prev_log_index = 3;</code>
+       *
+       * <pre>
+       * index of log entry immediately preceding new ones
+       * </pre>
+       */
       public int getPrevLogIndex() {
         return prevLogIndex_;
       }
+      /**
+       * <code>optional int32 prev_log_index = 3;</code>
+       *
+       * <pre>
+       * index of log entry immediately preceding new ones
+       * </pre>
+       */
       public Builder setPrevLogIndex(int value) {
         bitField0_ |= 0x00000004;
         prevLogIndex_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 prev_log_index = 3;</code>
+       *
+       * <pre>
+       * index of log entry immediately preceding new ones
+       * </pre>
+       */
       public Builder clearPrevLogIndex() {
         bitField0_ = (bitField0_ & ~0x00000004);
         prevLogIndex_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional uint64 prev_log_term = 4;
       private long prevLogTerm_ ;
+      /**
+       * <code>optional uint64 prev_log_term = 4;</code>
+       *
+       * <pre>
+       * term of prevLogIndex entry
+       * </pre>
+       */
       public boolean hasPrevLogTerm() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional uint64 prev_log_term = 4;</code>
+       *
+       * <pre>
+       * term of prevLogIndex entry
+       * </pre>
+       */
       public long getPrevLogTerm() {
         return prevLogTerm_;
       }
+      /**
+       * <code>optional uint64 prev_log_term = 4;</code>
+       *
+       * <pre>
+       * term of prevLogIndex entry
+       * </pre>
+       */
       public Builder setPrevLogTerm(long value) {
         bitField0_ |= 0x00000008;
         prevLogTerm_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 prev_log_term = 4;</code>
+       *
+       * <pre>
+       * term of prevLogIndex entry
+       * </pre>
+       */
       public Builder clearPrevLogTerm() {
         bitField0_ = (bitField0_ & ~0x00000008);
         prevLogTerm_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional uint32 leader_commit_index = 5;
       private int leaderCommitIndex_ ;
+      /**
+       * <code>optional uint32 leader_commit_index = 5;</code>
+       *
+       * <pre>
+       * leader’s commitIndex
+       * </pre>
+       */
       public boolean hasLeaderCommitIndex() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional uint32 leader_commit_index = 5;</code>
+       *
+       * <pre>
+       * leader’s commitIndex
+       * </pre>
+       */
       public int getLeaderCommitIndex() {
         return leaderCommitIndex_;
       }
+      /**
+       * <code>optional uint32 leader_commit_index = 5;</code>
+       *
+       * <pre>
+       * leader’s commitIndex
+       * </pre>
+       */
       public Builder setLeaderCommitIndex(int value) {
         bitField0_ |= 0x00000010;
         leaderCommitIndex_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint32 leader_commit_index = 5;</code>
+       *
+       * <pre>
+       * leader’s commitIndex
+       * </pre>
+       */
       public Builder clearLeaderCommitIndex() {
         bitField0_ = (bitField0_ & ~0x00000010);
         leaderCommitIndex_ = 0;
         onChanged();
         return this;
       }
-      
+
       // repeated .LogEntry entries = 6;
       private java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry> entries_ =
         java.util.Collections.emptyList();
@@ -1887,10 +2770,17 @@ public final class RaftProtos {
           bitField0_ |= 0x00000020;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           org.yraft.protobuf.generated.RaftProtos.LogEntry, org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder, org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder> entriesBuilder_;
-      
+
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry> getEntriesList() {
         if (entriesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(entries_);
@@ -1898,6 +2788,13 @@ public final class RaftProtos {
           return entriesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public int getEntriesCount() {
         if (entriesBuilder_ == null) {
           return entries_.size();
@@ -1905,6 +2802,13 @@ public final class RaftProtos {
           return entriesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntry getEntries(int index) {
         if (entriesBuilder_ == null) {
           return entries_.get(index);
@@ -1912,6 +2816,13 @@ public final class RaftProtos {
           return entriesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder setEntries(
           int index, org.yraft.protobuf.generated.RaftProtos.LogEntry value) {
         if (entriesBuilder_ == null) {
@@ -1926,6 +2837,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder setEntries(
           int index, org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder builderForValue) {
         if (entriesBuilder_ == null) {
@@ -1937,6 +2855,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder addEntries(org.yraft.protobuf.generated.RaftProtos.LogEntry value) {
         if (entriesBuilder_ == null) {
           if (value == null) {
@@ -1950,6 +2875,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder addEntries(
           int index, org.yraft.protobuf.generated.RaftProtos.LogEntry value) {
         if (entriesBuilder_ == null) {
@@ -1964,6 +2896,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder addEntries(
           org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder builderForValue) {
         if (entriesBuilder_ == null) {
@@ -1975,6 +2914,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder addEntries(
           int index, org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder builderForValue) {
         if (entriesBuilder_ == null) {
@@ -1986,6 +2932,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder addAllEntries(
           java.lang.Iterable<? extends org.yraft.protobuf.generated.RaftProtos.LogEntry> values) {
         if (entriesBuilder_ == null) {
@@ -1997,6 +2950,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder clearEntries() {
         if (entriesBuilder_ == null) {
           entries_ = java.util.Collections.emptyList();
@@ -2007,6 +2967,13 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public Builder removeEntries(int index) {
         if (entriesBuilder_ == null) {
           ensureEntriesIsMutable();
@@ -2017,10 +2984,24 @@ public final class RaftProtos {
         }
         return this;
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder getEntriesBuilder(
           int index) {
         return getEntriesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder getEntriesOrBuilder(
           int index) {
         if (entriesBuilder_ == null) {
@@ -2028,6 +3009,13 @@ public final class RaftProtos {
           return entriesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public java.util.List<? extends org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder> 
            getEntriesOrBuilderList() {
         if (entriesBuilder_ != null) {
@@ -2036,15 +3024,36 @@ public final class RaftProtos {
           return java.util.Collections.unmodifiableList(entries_);
         }
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder addEntriesBuilder() {
         return getEntriesFieldBuilder().addBuilder(
             org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance());
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder addEntriesBuilder(
           int index) {
         return getEntriesFieldBuilder().addBuilder(
             index, org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance());
       }
+      /**
+       * <code>repeated .LogEntry entries = 6;</code>
+       *
+       * <pre>
+       * log entries to store (empty for heartbeat; may send more than one for efficiency)
+       * </pre>
+       */
       public java.util.List<org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder> 
            getEntriesBuilderList() {
         return getEntriesFieldBuilder().getBuilderList();
@@ -2063,492 +3072,123 @@ public final class RaftProtos {
         }
         return entriesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:AppendEntriesRequest)
     }
-    
+
     static {
       defaultInstance = new AppendEntriesRequest(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:AppendEntriesRequest)
   }
-  
+
   public interface AppendEntriesResponseOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 term = 1;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for leader to update itself
+     * </pre>
+     */
     boolean hasTerm();
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for leader to update itself
+     * </pre>
+     */
     long getTerm();
-    
+
     // optional .AppendEntriesResponse.AppendStatus status = 2;
+    /**
+     * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+     *
+     * <pre>
+     * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+     * </pre>
+     */
     boolean hasStatus();
+    /**
+     * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+     *
+     * <pre>
+     * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+     * </pre>
+     */
     org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus getStatus();
-    
+
     // optional uint32 candidate_id = 3;
+    /**
+     * <code>optional uint32 candidate_id = 3;</code>
+     *
+     * <pre>
+     * Candidate who sends this response
+     * </pre>
+     */
     boolean hasCandidateId();
+    /**
+     * <code>optional uint32 candidate_id = 3;</code>
+     *
+     * <pre>
+     * Candidate who sends this response
+     * </pre>
+     */
     int getCandidateId();
   }
+  /**
+   * Protobuf type {@code AppendEntriesResponse}
+   */
   public static final class AppendEntriesResponse extends
       com.google.protobuf.GeneratedMessage
       implements AppendEntriesResponseOrBuilder {
     // Use AppendEntriesResponse.newBuilder() to construct.
-    private AppendEntriesResponse(Builder builder) {
+    private AppendEntriesResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private AppendEntriesResponse(boolean noInit) {}
-    
+    private AppendEntriesResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final AppendEntriesResponse defaultInstance;
     public static AppendEntriesResponse getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public AppendEntriesResponse getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_fieldAccessorTable;
-    }
-    
-    public enum AppendStatus
-        implements com.google.protobuf.ProtocolMessageEnum {
-      ERROR(0, -1),
-      SUCCESS(1, 0),
-      ;
-      
-      public static final int ERROR_VALUE = -1;
-      public static final int SUCCESS_VALUE = 0;
-      
-      
-      public final int getNumber() { return value; }
-      
-      public static AppendStatus valueOf(int value) {
-        switch (value) {
-          case -1: return ERROR;
-          case 0: return SUCCESS;
-          default: return null;
-        }
-      }
-      
-      public static com.google.protobuf.Internal.EnumLiteMap<AppendStatus>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<AppendStatus>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<AppendStatus>() {
-              public AppendStatus findValueByNumber(int number) {
-                return AppendStatus.valueOf(number);
-              }
-            };
-      
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDescriptor().getEnumTypes().get(0);
-      }
-      
-      private static final AppendStatus[] VALUES = {
-        ERROR, SUCCESS, 
-      };
-      
-      public static AppendStatus valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-      
-      private final int index;
-      private final int value;
-      
-      private AppendStatus(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-      
-      // @@protoc_insertion_point(enum_scope:AppendEntriesResponse.AppendStatus)
-    }
-    
-    private int bitField0_;
-    // optional uint64 term = 1;
-    public static final int TERM_FIELD_NUMBER = 1;
-    private long term_;
-    public boolean hasTerm() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getTerm() {
-      return term_;
-    }
-    
-    // optional .AppendEntriesResponse.AppendStatus status = 2;
-    public static final int STATUS_FIELD_NUMBER = 2;
-    private org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus status_;
-    public boolean hasStatus() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus getStatus() {
-      return status_;
-    }
-    
-    // optional uint32 candidate_id = 3;
-    public static final int CANDIDATE_ID_FIELD_NUMBER = 3;
-    private int candidateId_;
-    public boolean hasCandidateId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getCandidateId() {
-      return candidateId_;
-    }
-    
-    private void initFields() {
-      term_ = 0L;
-      status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
-      candidateId_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, status_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, candidateId_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, status_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, candidateId_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse)) {
-        return super.equals(obj);
-      }
-      org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse other = (org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse) obj;
-      
-      boolean result = true;
-      result = result && (hasTerm() == other.hasTerm());
-      if (hasTerm()) {
-        result = result && (getTerm()
-            == other.getTerm());
-      }
-      result = result && (hasStatus() == other.hasStatus());
-      if (hasStatus()) {
-        result = result &&
-            (getStatus() == other.getStatus());
-      }
-      result = result && (hasCandidateId() == other.hasCandidateId());
-      if (hasCandidateId()) {
-        result = result && (getCandidateId()
-            == other.getCandidateId());
-      }
-      result = result &&
-          getUnknownFields().equals(other.getUnknownFields());
-      return result;
-    }
-    
-    @java.lang.Override
-    public int hashCode() {
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasTerm()) {
-        hash = (37 * hash) + TERM_FIELD_NUMBER;
-        hash = (53 * hash) + hashLong(getTerm());
-      }
-      if (hasStatus()) {
-        hash = (37 * hash) + STATUS_FIELD_NUMBER;
-        hash = (53 * hash) + hashEnum(getStatus());
-      }
-      if (hasCandidateId()) {
-        hash = (37 * hash) + CANDIDATE_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getCandidateId();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      return hash;
-    }
-    
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
+    private AppendEntriesResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_fieldAccessorTable;
-      }
-      
-      // Construct using org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        term_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        candidateId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDescriptor();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse getDefaultInstanceForType() {
-        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDefaultInstance();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse build() {
-        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse buildPartial() {
-        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse result = new org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.term_ = term_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.status_ = status_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.candidateId_ = candidateId_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse) {
-          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse other) {
-        if (other == org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDefaultInstance()) return this;
-        if (other.hasTerm()) {
-          setTerm(other.getTerm());
-        }
-        if (other.hasStatus()) {
-          setStatus(other.getStatus());
-        }
-        if (other.hasCandidateId()) {
-          setCandidateId(other.getCandidateId());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -2575,423 +3215,404 @@ public final class RaftProtos {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // optional uint64 term = 1;
-      private long term_ ;
-      public boolean hasTerm() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public long getTerm() {
-        return term_;
-      }
-      public Builder setTerm(long value) {
-        bitField0_ |= 0x00000001;
-        term_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearTerm() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        term_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // optional .AppendEntriesResponse.AppendStatus status = 2;
-      private org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
-      public boolean hasStatus() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus getStatus() {
-        return status_;
-      }
-      public Builder setStatus(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
-        onChanged();
-        return this;
-      }
-      
-      // optional uint32 candidate_id = 3;
-      private int candidateId_ ;
-      public boolean hasCandidateId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getCandidateId() {
-        return candidateId_;
-      }
-      public Builder setCandidateId(int value) {
-        bitField0_ |= 0x00000004;
-        candidateId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearCandidateId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        candidateId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:AppendEntriesResponse)
     }
-    
-    static {
-      defaultInstance = new AppendEntriesResponse(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:AppendEntriesResponse)
-  }
-  
-  public interface PutRequestOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional uint64 id = 1;
-    boolean hasId();
-    long getId();
-    
-    // optional string host = 2;
-    boolean hasHost();
-    String getHost();
-    
-    // optional uint32 port = 3;
-    boolean hasPort();
-    int getPort();
-    
-    // optional bytes data = 4;
-    boolean hasData();
-    com.google.protobuf.ByteString getData();
-  }
-  public static final class PutRequest extends
-      com.google.protobuf.GeneratedMessage
-      implements PutRequestOrBuilder {
-    // Use PutRequest.newBuilder() to construct.
-    private PutRequest(Builder builder) {
-      super(builder);
-    }
-    private PutRequest(boolean noInit) {}
-    
-    private static final PutRequest defaultInstance;
-    public static PutRequest getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public PutRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_descriptor;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_fieldAccessorTable;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.class, org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<AppendEntriesResponse> PARSER =
+        new com.google.protobuf.AbstractParser<AppendEntriesResponse>() {
+      public AppendEntriesResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AppendEntriesResponse(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AppendEntriesResponse> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code AppendEntriesResponse.AppendStatus}
+     */
+    public enum AppendStatus
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>ERROR = -1;</code>
+       */
+      ERROR(0, -1),
+      /**
+       * <code>SUCCESS = 0;</code>
+       */
+      SUCCESS(1, 0),
+      ;
+
+      /**
+       * <code>ERROR = -1;</code>
+       */
+      public static final int ERROR_VALUE = -1;
+      /**
+       * <code>SUCCESS = 0;</code>
+       */
+      public static final int SUCCESS_VALUE = 0;
+
+
+      public final int getNumber() { return value; }
+
+      public static AppendStatus valueOf(int value) {
+        switch (value) {
+          case -1: return ERROR;
+          case 0: return SUCCESS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<AppendStatus>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<AppendStatus>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<AppendStatus>() {
+              public AppendStatus findValueByNumber(int number) {
+                return AppendStatus.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final AppendStatus[] VALUES = values();
+
+      public static AppendStatus valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private AppendStatus(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:AppendEntriesResponse.AppendStatus)
+    }
+
     private int bitField0_;
-    // optional uint64 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private long id_;
-    public boolean hasId() {
+    // optional uint64 term = 1;
+    public static final int TERM_FIELD_NUMBER = 1;
+    private long term_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for leader to update itself
+     * </pre>
+     */
+    public boolean hasTerm() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public long getId() {
-      return id_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     *
+     * <pre>
+     * currentTerm, for leader to update itself
+     * </pre>
+     */
+    public long getTerm() {
+      return term_;
     }
-    
-    // optional string host = 2;
-    public static final int HOST_FIELD_NUMBER = 2;
-    private java.lang.Object host_;
-    public boolean hasHost() {
+
+    // optional .AppendEntriesResponse.AppendStatus status = 2;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus status_;
+    /**
+     * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+     *
+     * <pre>
+     * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+     * </pre>
+     */
+    public boolean hasStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getHost() {
-      java.lang.Object ref = host_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          host_ = s;
-        }
-        return s;
-      }
+    /**
+     * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+     *
+     * <pre>
+     * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+     * </pre>
+     */
+    public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus getStatus() {
+      return status_;
     }
-    private com.google.protobuf.ByteString getHostBytes() {
-      java.lang.Object ref = host_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        host_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional uint32 port = 3;
-    public static final int PORT_FIELD_NUMBER = 3;
-    private int port_;
-    public boolean hasPort() {
+
+    // optional uint32 candidate_id = 3;
+    public static final int CANDIDATE_ID_FIELD_NUMBER = 3;
+    private int candidateId_;
+    /**
+     * <code>optional uint32 candidate_id = 3;</code>
+     *
+     * <pre>
+     * Candidate who sends this response
+     * </pre>
+     */
+    public boolean hasCandidateId() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public int getPort() {
-      return port_;
+    /**
+     * <code>optional uint32 candidate_id = 3;</code>
+     *
+     * <pre>
+     * Candidate who sends this response
+     * </pre>
+     */
+    public int getCandidateId() {
+      return candidateId_;
     }
-    
-    // optional bytes data = 4;
-    public static final int DATA_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString data_;
-    public boolean hasData() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public com.google.protobuf.ByteString getData() {
-      return data_;
-    }
-    
+
     private void initFields() {
-      id_ = 0L;
-      host_ = "";
-      port_ = 0;
-      data_ = com.google.protobuf.ByteString.EMPTY;
+      term_ = 0L;
+      status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
+      candidateId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, id_);
+        output.writeUInt64(1, term_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getHostBytes());
+        output.writeEnum(2, status_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, port_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, data_);
+        output.writeUInt32(3, candidateId_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, id_);
+          .computeUInt64Size(1, term_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getHostBytes());
+          .computeEnumSize(2, status_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, port_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, data_);
+          .computeUInt32Size(3, candidateId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.PutRequest)) {
+      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse)) {
         return super.equals(obj);
       }
-      org.yraft.protobuf.generated.RaftProtos.PutRequest other = (org.yraft.protobuf.generated.RaftProtos.PutRequest) obj;
-      
+      org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse other = (org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse) obj;
+
       boolean result = true;
-      result = result && (hasId() == other.hasId());
-      if (hasId()) {
-        result = result && (getId()
-            == other.getId());
+      result = result && (hasTerm() == other.hasTerm());
+      if (hasTerm()) {
+        result = result && (getTerm()
+            == other.getTerm());
       }
-      result = result && (hasHost() == other.hasHost());
-      if (hasHost()) {
-        result = result && getHost()
-            .equals(other.getHost());
+      result = result && (hasStatus() == other.hasStatus());
+      if (hasStatus()) {
+        result = result &&
+            (getStatus() == other.getStatus());
       }
-      result = result && (hasPort() == other.hasPort());
-      if (hasPort()) {
-        result = result && (getPort()
-            == other.getPort());
-      }
-      result = result && (hasData() == other.hasData());
-      if (hasData()) {
-        result = result && getData()
-            .equals(other.getData());
+      result = result && (hasCandidateId() == other.hasCandidateId());
+      if (hasCandidateId()) {
+        result = result && (getCandidateId()
+            == other.getCandidateId());
       }
       result = result &&
           getUnknownFields().equals(other.getUnknownFields());
       return result;
     }
-    
+
+    private int memoizedHashCode = 0;
     @java.lang.Override
     public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasId()) {
-        hash = (37 * hash) + ID_FIELD_NUMBER;
-        hash = (53 * hash) + hashLong(getId());
+      if (hasTerm()) {
+        hash = (37 * hash) + TERM_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getTerm());
       }
-      if (hasHost()) {
-        hash = (37 * hash) + HOST_FIELD_NUMBER;
-        hash = (53 * hash) + getHost().hashCode();
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + hashEnum(getStatus());
       }
-      if (hasPort()) {
-        hash = (37 * hash) + PORT_FIELD_NUMBER;
-        hash = (53 * hash) + getPort();
-      }
-      if (hasData()) {
-        hash = (37 * hash) + DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getData().hashCode();
+      if (hasCandidateId()) {
+        hash = (37 * hash) + CANDIDATE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getCandidateId();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
       return hash;
     }
-    
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(byte[] data)
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(java.io.InputStream input)
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseDelimitedFrom(java.io.InputStream input)
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseDelimitedFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
-    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+    public static org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.PutRequest prototype) {
+    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code AppendEntriesResponse}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.yraft.protobuf.generated.RaftProtos.PutRequestOrBuilder {
+       implements org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_descriptor;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_fieldAccessorTable;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.class, org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.Builder.class);
       }
-      
-      // Construct using org.yraft.protobuf.generated.RaftProtos.PutRequest.newBuilder()
+
+      // Construct using org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3002,127 +3623,364 @@ public final class RaftProtos {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
-        id_ = 0L;
+        term_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        host_ = "";
+        status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
         bitField0_ = (bitField0_ & ~0x00000002);
-        port_ = 0;
+        candidateId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        data_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.PutRequest.getDescriptor();
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_AppendEntriesResponse_descriptor;
       }
-      
-      public org.yraft.protobuf.generated.RaftProtos.PutRequest getDefaultInstanceForType() {
-        return org.yraft.protobuf.generated.RaftProtos.PutRequest.getDefaultInstance();
+
+      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse getDefaultInstanceForType() {
+        return org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDefaultInstance();
       }
-      
-      public org.yraft.protobuf.generated.RaftProtos.PutRequest build() {
-        org.yraft.protobuf.generated.RaftProtos.PutRequest result = buildPartial();
+
+      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse build() {
+        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-      
-      private org.yraft.protobuf.generated.RaftProtos.PutRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.PutRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.PutRequest buildPartial() {
-        org.yraft.protobuf.generated.RaftProtos.PutRequest result = new org.yraft.protobuf.generated.RaftProtos.PutRequest(this);
+
+      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse buildPartial() {
+        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse result = new org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.term_ = term_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.host_ = host_;
+        result.status_ = status_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.port_ = port_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.data_ = data_;
+        result.candidateId_ = candidateId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.yraft.protobuf.generated.RaftProtos.PutRequest) {
-          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.PutRequest)other);
+        if (other instanceof org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse) {
+          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-      
-      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.PutRequest other) {
-        if (other == org.yraft.protobuf.generated.RaftProtos.PutRequest.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
+
+      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse other) {
+        if (other == org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.getDefaultInstance()) return this;
+        if (other.hasTerm()) {
+          setTerm(other.getTerm());
         }
-        if (other.hasHost()) {
-          setHost(other.getHost());
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
         }
-        if (other.hasPort()) {
-          setPort(other.getPort());
-        }
-        if (other.hasData()) {
-          setData(other.getData());
+        if (other.hasCandidateId()) {
+          setCandidateId(other.getCandidateId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint64 term = 1;
+      private long term_ ;
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for leader to update itself
+       * </pre>
+       */
+      public boolean hasTerm() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for leader to update itself
+       * </pre>
+       */
+      public long getTerm() {
+        return term_;
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for leader to update itself
+       * </pre>
+       */
+      public Builder setTerm(long value) {
+        bitField0_ |= 0x00000001;
+        term_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       *
+       * <pre>
+       * currentTerm, for leader to update itself
+       * </pre>
+       */
+      public Builder clearTerm() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        term_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional .AppendEntriesResponse.AppendStatus status = 2;
+      private org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
+      /**
+       * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+       *
+       * <pre>
+       * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+       * </pre>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+       *
+       * <pre>
+       * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+       * </pre>
+       */
+      public org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus getStatus() {
+        return status_;
+      }
+      /**
+       * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+       *
+       * <pre>
+       * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+       * </pre>
+       */
+      public Builder setStatus(org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .AppendEntriesResponse.AppendStatus status = 2;</code>
+       *
+       * <pre>
+       * SUCCESS if follower contained entry matching prevLogIndex and prevLogTerm
+       * </pre>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        status_ = org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.AppendStatus.ERROR;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 candidate_id = 3;
+      private int candidateId_ ;
+      /**
+       * <code>optional uint32 candidate_id = 3;</code>
+       *
+       * <pre>
+       * Candidate who sends this response
+       * </pre>
+       */
+      public boolean hasCandidateId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 candidate_id = 3;</code>
+       *
+       * <pre>
+       * Candidate who sends this response
+       * </pre>
+       */
+      public int getCandidateId() {
+        return candidateId_;
+      }
+      /**
+       * <code>optional uint32 candidate_id = 3;</code>
+       *
+       * <pre>
+       * Candidate who sends this response
+       * </pre>
+       */
+      public Builder setCandidateId(int value) {
+        bitField0_ |= 0x00000004;
+        candidateId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 candidate_id = 3;</code>
+       *
+       * <pre>
+       * Candidate who sends this response
+       * </pre>
+       */
+      public Builder clearCandidateId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        candidateId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:AppendEntriesResponse)
+    }
+
+    static {
+      defaultInstance = new AppendEntriesResponse(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:AppendEntriesResponse)
+  }
+
+  public interface PutRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint64 id = 1;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    long getId();
+
+    // optional string host = 2;
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    boolean hasHost();
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    java.lang.String getHost();
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getHostBytes();
+
+    // optional uint32 port = 3;
+    /**
+     * <code>optional uint32 port = 3;</code>
+     */
+    boolean hasPort();
+    /**
+     * <code>optional uint32 port = 3;</code>
+     */
+    int getPort();
+
+    // optional bytes data = 4;
+    /**
+     * <code>optional bytes data = 4;</code>
+     */
+    boolean hasData();
+    /**
+     * <code>optional bytes data = 4;</code>
+     */
+    com.google.protobuf.ByteString getData();
+  }
+  /**
+   * Protobuf type {@code PutRequest}
+   */
+  public static final class PutRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements PutRequestOrBuilder {
+    // Use PutRequest.newBuilder() to construct.
+    private PutRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PutRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PutRequest defaultInstance;
+    public static PutRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PutRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PutRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -3148,47 +4006,556 @@ public final class RaftProtos {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.PutRequest.class, org.yraft.protobuf.generated.RaftProtos.PutRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PutRequest> PARSER =
+        new com.google.protobuf.AbstractParser<PutRequest>() {
+      public PutRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PutRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PutRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional uint64 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    // optional string host = 2;
+    public static final int HOST_FIELD_NUMBER = 2;
+    private java.lang.Object host_;
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    public boolean hasHost() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    public java.lang.String getHost() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          host_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string host = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getHostBytes() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        host_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional uint32 port = 3;
+    public static final int PORT_FIELD_NUMBER = 3;
+    private int port_;
+    /**
+     * <code>optional uint32 port = 3;</code>
+     */
+    public boolean hasPort() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 port = 3;</code>
+     */
+    public int getPort() {
+      return port_;
+    }
+
+    // optional bytes data = 4;
+    public static final int DATA_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>optional bytes data = 4;</code>
+     */
+    public boolean hasData() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bytes data = 4;</code>
+     */
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
+    private void initFields() {
+      id_ = 0L;
+      host_ = "";
+      port_ = 0;
+      data_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getHostBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, port_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, data_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getHostBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, port_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, data_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.PutRequest)) {
+        return super.equals(obj);
+      }
+      org.yraft.protobuf.generated.RaftProtos.PutRequest other = (org.yraft.protobuf.generated.RaftProtos.PutRequest) obj;
+
+      boolean result = true;
+      result = result && (hasId() == other.hasId());
+      if (hasId()) {
+        result = result && (getId()
+            == other.getId());
+      }
+      result = result && (hasHost() == other.hasHost());
+      if (hasHost()) {
+        result = result && getHost()
+            .equals(other.getHost());
+      }
+      result = result && (hasPort() == other.hasPort());
+      if (hasPort()) {
+        result = result && (getPort()
+            == other.getPort());
+      }
+      result = result && (hasData() == other.hasData());
+      if (hasData()) {
+        result = result && getData()
+            .equals(other.getData());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    private int memoizedHashCode = 0;
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasId()) {
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getId());
+      }
+      if (hasHost()) {
+        hash = (37 * hash) + HOST_FIELD_NUMBER;
+        hash = (53 * hash) + getHost().hashCode();
+      }
+      if (hasPort()) {
+        hash = (37 * hash) + PORT_FIELD_NUMBER;
+        hash = (53 * hash) + getPort();
+      }
+      if (hasData()) {
+        hash = (37 * hash) + DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getData().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.PutRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.PutRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PutRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.yraft.protobuf.generated.RaftProtos.PutRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.PutRequest.class, org.yraft.protobuf.generated.RaftProtos.PutRequest.Builder.class);
+      }
+
+      // Construct using org.yraft.protobuf.generated.RaftProtos.PutRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        host_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        port_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        data_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_PutRequest_descriptor;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.PutRequest getDefaultInstanceForType() {
+        return org.yraft.protobuf.generated.RaftProtos.PutRequest.getDefaultInstance();
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.PutRequest build() {
+        org.yraft.protobuf.generated.RaftProtos.PutRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.PutRequest buildPartial() {
+        org.yraft.protobuf.generated.RaftProtos.PutRequest result = new org.yraft.protobuf.generated.RaftProtos.PutRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.host_ = host_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.port_ = port_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.data_ = data_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.yraft.protobuf.generated.RaftProtos.PutRequest) {
+          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.PutRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.PutRequest other) {
+        if (other == org.yraft.protobuf.generated.RaftProtos.PutRequest.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasHost()) {
+          bitField0_ |= 0x00000002;
+          host_ = other.host_;
+          onChanged();
+        }
+        if (other.hasPort()) {
+          setPort(other.getPort());
+        }
+        if (other.hasData()) {
+          setData(other.getData());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.yraft.protobuf.generated.RaftProtos.PutRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.PutRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional uint64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional string host = 2;
       private java.lang.Object host_ = "";
+      /**
+       * <code>optional string host = 2;</code>
+       */
       public boolean hasHost() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public String getHost() {
+      /**
+       * <code>optional string host = 2;</code>
+       */
+      public java.lang.String getHost() {
         java.lang.Object ref = host_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           host_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setHost(String value) {
+      /**
+       * <code>optional string host = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getHostBytes() {
+        java.lang.Object ref = host_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          host_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string host = 2;</code>
+       */
+      public Builder setHost(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3197,47 +4564,79 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string host = 2;</code>
+       */
       public Builder clearHost() {
         bitField0_ = (bitField0_ & ~0x00000002);
         host_ = getDefaultInstance().getHost();
         onChanged();
         return this;
       }
-      void setHost(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
+      /**
+       * <code>optional string host = 2;</code>
+       */
+      public Builder setHostBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         host_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional uint32 port = 3;
       private int port_ ;
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
       public boolean hasPort() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
       public int getPort() {
         return port_;
       }
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
       public Builder setPort(int value) {
         bitField0_ |= 0x00000004;
         port_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint32 port = 3;</code>
+       */
       public Builder clearPort() {
         bitField0_ = (bitField0_ & ~0x00000004);
         port_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional bytes data = 4;
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes data = 4;</code>
+       */
       public boolean hasData() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional bytes data = 4;</code>
+       */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
+      /**
+       * <code>optional bytes data = 4;</code>
+       */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -3247,74 +4646,181 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes data = 4;</code>
+       */
       public Builder clearData() {
         bitField0_ = (bitField0_ & ~0x00000008);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:PutRequest)
     }
-    
+
     static {
       defaultInstance = new PutRequest(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:PutRequest)
   }
-  
+
   public interface ClusterConfigOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated string hosts = 1;
-    java.util.List<String> getHostsList();
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    java.util.List<java.lang.String>
+    getHostsList();
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
     int getHostsCount();
-    String getHosts(int index);
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    java.lang.String getHosts(int index);
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getHostsBytes(int index);
   }
+  /**
+   * Protobuf type {@code ClusterConfig}
+   */
   public static final class ClusterConfig extends
       com.google.protobuf.GeneratedMessage
       implements ClusterConfigOrBuilder {
     // Use ClusterConfig.newBuilder() to construct.
-    private ClusterConfig(Builder builder) {
+    private ClusterConfig(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ClusterConfig(boolean noInit) {}
-    
+    private ClusterConfig(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ClusterConfig defaultInstance;
     public static ClusterConfig getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ClusterConfig getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ClusterConfig(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                hosts_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              hosts_.add(input.readBytes());
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          hosts_ = new com.google.protobuf.UnmodifiableLazyStringList(hosts_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_fieldAccessorTable;
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.ClusterConfig.class, org.yraft.protobuf.generated.RaftProtos.ClusterConfig.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ClusterConfig> PARSER =
+        new com.google.protobuf.AbstractParser<ClusterConfig>() {
+      public ClusterConfig parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ClusterConfig(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ClusterConfig> getParserForType() {
+      return PARSER;
+    }
+
     // repeated string hosts = 1;
     public static final int HOSTS_FIELD_NUMBER = 1;
     private com.google.protobuf.LazyStringList hosts_;
-    public java.util.List<String>
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    public java.util.List<java.lang.String>
         getHostsList() {
       return hosts_;
     }
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
     public int getHostsCount() {
       return hosts_.size();
     }
-    public String getHosts(int index) {
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    public java.lang.String getHosts(int index) {
       return hosts_.get(index);
     }
-    
+    /**
+     * <code>repeated string hosts = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getHostsBytes(int index) {
+      return hosts_.getByteString(index);
+    }
+
     private void initFields() {
       hosts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
@@ -3322,11 +4828,11 @@ public final class RaftProtos {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3335,12 +4841,12 @@ public final class RaftProtos {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       {
         int dataSize = 0;
@@ -3355,14 +4861,14 @@ public final class RaftProtos {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -3372,7 +4878,7 @@ public final class RaftProtos {
         return super.equals(obj);
       }
       org.yraft.protobuf.generated.RaftProtos.ClusterConfig other = (org.yraft.protobuf.generated.RaftProtos.ClusterConfig) obj;
-      
+
       boolean result = true;
       result = result && getHostsList()
           .equals(other.getHostsList());
@@ -3380,9 +4886,13 @@ public final class RaftProtos {
           getUnknownFields().equals(other.getUnknownFields());
       return result;
     }
-    
+
+    private int memoizedHashCode = 0;
     @java.lang.Override
     public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (getHostsCount() > 0) {
@@ -3390,89 +4900,79 @@ public final class RaftProtos {
         hash = (53 * hash) + getHostsList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
       return hash;
     }
-    
+
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static org.yraft.protobuf.generated.RaftProtos.ClusterConfig parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.ClusterConfig prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code ClusterConfig}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements org.yraft.protobuf.generated.RaftProtos.ClusterConfigOrBuilder {
@@ -3480,18 +4980,21 @@ public final class RaftProtos {
           getDescriptor() {
         return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_fieldAccessorTable;
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.ClusterConfig.class, org.yraft.protobuf.generated.RaftProtos.ClusterConfig.Builder.class);
       }
-      
+
       // Construct using org.yraft.protobuf.generated.RaftProtos.ClusterConfig.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3502,27 +5005,27 @@ public final class RaftProtos {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         hosts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.ClusterConfig.getDescriptor();
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_ClusterConfig_descriptor;
       }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.ClusterConfig getDefaultInstanceForType() {
         return org.yraft.protobuf.generated.RaftProtos.ClusterConfig.getDefaultInstance();
       }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.ClusterConfig build() {
         org.yraft.protobuf.generated.RaftProtos.ClusterConfig result = buildPartial();
         if (!result.isInitialized()) {
@@ -3530,17 +5033,7 @@ public final class RaftProtos {
         }
         return result;
       }
-      
-      private org.yraft.protobuf.generated.RaftProtos.ClusterConfig buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.ClusterConfig result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public org.yraft.protobuf.generated.RaftProtos.ClusterConfig buildPartial() {
         org.yraft.protobuf.generated.RaftProtos.ClusterConfig result = new org.yraft.protobuf.generated.RaftProtos.ClusterConfig(this);
         int from_bitField0_ = bitField0_;
@@ -3553,7 +5046,7 @@ public final class RaftProtos {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof org.yraft.protobuf.generated.RaftProtos.ClusterConfig) {
           return mergeFrom((org.yraft.protobuf.generated.RaftProtos.ClusterConfig)other);
@@ -3562,7 +5055,7 @@ public final class RaftProtos {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.ClusterConfig other) {
         if (other == org.yraft.protobuf.generated.RaftProtos.ClusterConfig.getDefaultInstance()) return this;
         if (!other.hosts_.isEmpty()) {
@@ -3578,45 +5071,30 @@ public final class RaftProtos {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              ensureHostsIsMutable();
-              hosts_.add(input.readBytes());
-              break;
-            }
+        org.yraft.protobuf.generated.RaftProtos.ClusterConfig parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.ClusterConfig) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated string hosts = 1;
       private com.google.protobuf.LazyStringList hosts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureHostsIsMutable() {
@@ -3625,18 +5103,37 @@ public final class RaftProtos {
           bitField0_ |= 0x00000001;
          }
       }
-      public java.util.List<String>
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
+      public java.util.List<java.lang.String>
           getHostsList() {
         return java.util.Collections.unmodifiableList(hosts_);
       }
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
       public int getHostsCount() {
         return hosts_.size();
       }
-      public String getHosts(int index) {
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
+      public java.lang.String getHosts(int index) {
         return hosts_.get(index);
       }
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getHostsBytes(int index) {
+        return hosts_.getByteString(index);
+      }
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
       public Builder setHosts(
-          int index, String value) {
+          int index, java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3645,7 +5142,11 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
-      public Builder addHosts(String value) {
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
+      public Builder addHosts(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3654,513 +5155,131 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
       public Builder addAllHosts(
-          java.lang.Iterable<String> values) {
+          java.lang.Iterable<java.lang.String> values) {
         ensureHostsIsMutable();
         super.addAll(values, hosts_);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
       public Builder clearHosts() {
         hosts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
-      void addHosts(com.google.protobuf.ByteString value) {
-        ensureHostsIsMutable();
+      /**
+       * <code>repeated string hosts = 1;</code>
+       */
+      public Builder addHostsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureHostsIsMutable();
         hosts_.add(value);
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:ClusterConfig)
     }
-    
+
     static {
       defaultInstance = new ClusterConfig(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:ClusterConfig)
   }
-  
+
   public interface LogEntryOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional uint64 term = 1;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     */
     boolean hasTerm();
+    /**
+     * <code>optional uint64 term = 1;</code>
+     */
     long getTerm();
-    
+
     // optional .LogEntry.EntryType type = 2;
+    /**
+     * <code>optional .LogEntry.EntryType type = 2;</code>
+     */
     boolean hasType();
+    /**
+     * <code>optional .LogEntry.EntryType type = 2;</code>
+     */
     org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType();
-    
+
     // optional bytes data = 3;
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     boolean hasData();
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     com.google.protobuf.ByteString getData();
   }
+  /**
+   * Protobuf type {@code LogEntry}
+   */
   public static final class LogEntry extends
       com.google.protobuf.GeneratedMessage
       implements LogEntryOrBuilder {
     // Use LogEntry.newBuilder() to construct.
-    private LogEntry(Builder builder) {
+    private LogEntry(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private LogEntry(boolean noInit) {}
-    
+    private LogEntry(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final LogEntry defaultInstance;
     public static LogEntry getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public LogEntry getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_fieldAccessorTable;
-    }
-    
-    public enum EntryType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      UNKNOWN(0, -1),
-      NORMAL(1, 0),
-      MEMBERSHIP(2, 1),
-      ;
-      
-      public static final int UNKNOWN_VALUE = -1;
-      public static final int NORMAL_VALUE = 0;
-      public static final int MEMBERSHIP_VALUE = 1;
-      
-      
-      public final int getNumber() { return value; }
-      
-      public static EntryType valueOf(int value) {
-        switch (value) {
-          case -1: return UNKNOWN;
-          case 0: return NORMAL;
-          case 1: return MEMBERSHIP;
-          default: return null;
-        }
-      }
-      
-      public static com.google.protobuf.Internal.EnumLiteMap<EntryType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<EntryType>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<EntryType>() {
-              public EntryType findValueByNumber(int number) {
-                return EntryType.valueOf(number);
-              }
-            };
-      
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.LogEntry.getDescriptor().getEnumTypes().get(0);
-      }
-      
-      private static final EntryType[] VALUES = {
-        UNKNOWN, NORMAL, MEMBERSHIP, 
-      };
-      
-      public static EntryType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-      
-      private final int index;
-      private final int value;
-      
-      private EntryType(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-      
-      // @@protoc_insertion_point(enum_scope:LogEntry.EntryType)
-    }
-    
-    private int bitField0_;
-    // optional uint64 term = 1;
-    public static final int TERM_FIELD_NUMBER = 1;
-    private long term_;
-    public boolean hasTerm() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getTerm() {
-      return term_;
-    }
-    
-    // optional .LogEntry.EntryType type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType() {
-      return type_;
-    }
-    
-    // optional bytes data = 3;
-    public static final int DATA_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString data_;
-    public boolean hasData() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public com.google.protobuf.ByteString getData() {
-      return data_;
-    }
-    
-    private void initFields() {
-      term_ = 0L;
-      type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
-      data_ = com.google.protobuf.ByteString.EMPTY;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, data_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, data_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.LogEntry)) {
-        return super.equals(obj);
-      }
-      org.yraft.protobuf.generated.RaftProtos.LogEntry other = (org.yraft.protobuf.generated.RaftProtos.LogEntry) obj;
-      
-      boolean result = true;
-      result = result && (hasTerm() == other.hasTerm());
-      if (hasTerm()) {
-        result = result && (getTerm()
-            == other.getTerm());
-      }
-      result = result && (hasType() == other.hasType());
-      if (hasType()) {
-        result = result &&
-            (getType() == other.getType());
-      }
-      result = result && (hasData() == other.hasData());
-      if (hasData()) {
-        result = result && getData()
-            .equals(other.getData());
-      }
-      result = result &&
-          getUnknownFields().equals(other.getUnknownFields());
-      return result;
-    }
-    
-    @java.lang.Override
-    public int hashCode() {
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasTerm()) {
-        hash = (37 * hash) + TERM_FIELD_NUMBER;
-        hash = (53 * hash) + hashLong(getTerm());
-      }
-      if (hasType()) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + hashEnum(getType());
-      }
-      if (hasData()) {
-        hash = (37 * hash) + DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getData().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      return hash;
-    }
-    
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+    private LogEntry(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.LogEntry prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_fieldAccessorTable;
-      }
-      
-      // Construct using org.yraft.protobuf.generated.RaftProtos.LogEntry.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        term_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        data_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.yraft.protobuf.generated.RaftProtos.LogEntry.getDescriptor();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.LogEntry getDefaultInstanceForType() {
-        return org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance();
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.LogEntry build() {
-        org.yraft.protobuf.generated.RaftProtos.LogEntry result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private org.yraft.protobuf.generated.RaftProtos.LogEntry buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        org.yraft.protobuf.generated.RaftProtos.LogEntry result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public org.yraft.protobuf.generated.RaftProtos.LogEntry buildPartial() {
-        org.yraft.protobuf.generated.RaftProtos.LogEntry result = new org.yraft.protobuf.generated.RaftProtos.LogEntry(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.term_ = term_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.data_ = data_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.yraft.protobuf.generated.RaftProtos.LogEntry) {
-          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.LogEntry)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.LogEntry other) {
-        if (other == org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance()) return this;
-        if (other.hasTerm()) {
-          setTerm(other.getTerm());
-        }
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasData()) {
-          setData(other.getData());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -4187,39 +5306,550 @@ public final class RaftProtos {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.yraft.protobuf.generated.RaftProtos.LogEntry.class, org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<LogEntry> PARSER =
+        new com.google.protobuf.AbstractParser<LogEntry>() {
+      public LogEntry parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LogEntry(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LogEntry> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code LogEntry.EntryType}
+     */
+    public enum EntryType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN = -1;</code>
+       */
+      UNKNOWN(0, -1),
+      /**
+       * <code>NORMAL = 0;</code>
+       */
+      NORMAL(1, 0),
+      /**
+       * <code>MEMBERSHIP = 1;</code>
+       */
+      MEMBERSHIP(2, 1),
+      ;
+
+      /**
+       * <code>UNKNOWN = -1;</code>
+       */
+      public static final int UNKNOWN_VALUE = -1;
+      /**
+       * <code>NORMAL = 0;</code>
+       */
+      public static final int NORMAL_VALUE = 0;
+      /**
+       * <code>MEMBERSHIP = 1;</code>
+       */
+      public static final int MEMBERSHIP_VALUE = 1;
+
+
+      public final int getNumber() { return value; }
+
+      public static EntryType valueOf(int value) {
+        switch (value) {
+          case -1: return UNKNOWN;
+          case 0: return NORMAL;
+          case 1: return MEMBERSHIP;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<EntryType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<EntryType>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<EntryType>() {
+              public EntryType findValueByNumber(int number) {
+                return EntryType.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.LogEntry.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final EntryType[] VALUES = values();
+
+      public static EntryType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private EntryType(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:LogEntry.EntryType)
+    }
+
+    private int bitField0_;
+    // optional uint64 term = 1;
+    public static final int TERM_FIELD_NUMBER = 1;
+    private long term_;
+    /**
+     * <code>optional uint64 term = 1;</code>
+     */
+    public boolean hasTerm() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 term = 1;</code>
+     */
+    public long getTerm() {
+      return term_;
+    }
+
+    // optional .LogEntry.EntryType type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType type_;
+    /**
+     * <code>optional .LogEntry.EntryType type = 2;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .LogEntry.EntryType type = 2;</code>
+     */
+    public org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType() {
+      return type_;
+    }
+
+    // optional bytes data = 3;
+    public static final int DATA_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
+    public boolean hasData() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
+    private void initFields() {
+      term_ = 0L;
+      type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
+      data_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, term_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, data_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, term_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, data_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.yraft.protobuf.generated.RaftProtos.LogEntry)) {
+        return super.equals(obj);
+      }
+      org.yraft.protobuf.generated.RaftProtos.LogEntry other = (org.yraft.protobuf.generated.RaftProtos.LogEntry) obj;
+
+      boolean result = true;
+      result = result && (hasTerm() == other.hasTerm());
+      if (hasTerm()) {
+        result = result && (getTerm()
+            == other.getTerm());
+      }
+      result = result && (hasType() == other.hasType());
+      if (hasType()) {
+        result = result &&
+            (getType() == other.getType());
+      }
+      result = result && (hasData() == other.hasData());
+      if (hasData()) {
+        result = result && getData()
+            .equals(other.getData());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    private int memoizedHashCode = 0;
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasTerm()) {
+        hash = (37 * hash) + TERM_FIELD_NUMBER;
+        hash = (53 * hash) + hashLong(getTerm());
+      }
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + hashEnum(getType());
+      }
+      if (hasData()) {
+        hash = (37 * hash) + DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getData().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.yraft.protobuf.generated.RaftProtos.LogEntry parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.yraft.protobuf.generated.RaftProtos.LogEntry prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code LogEntry}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.yraft.protobuf.generated.RaftProtos.LogEntryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.yraft.protobuf.generated.RaftProtos.LogEntry.class, org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder.class);
+      }
+
+      // Construct using org.yraft.protobuf.generated.RaftProtos.LogEntry.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        term_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        data_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.yraft.protobuf.generated.RaftProtos.internal_static_LogEntry_descriptor;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.LogEntry getDefaultInstanceForType() {
+        return org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance();
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.LogEntry build() {
+        org.yraft.protobuf.generated.RaftProtos.LogEntry result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.yraft.protobuf.generated.RaftProtos.LogEntry buildPartial() {
+        org.yraft.protobuf.generated.RaftProtos.LogEntry result = new org.yraft.protobuf.generated.RaftProtos.LogEntry(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.term_ = term_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.data_ = data_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.yraft.protobuf.generated.RaftProtos.LogEntry) {
+          return mergeFrom((org.yraft.protobuf.generated.RaftProtos.LogEntry)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.yraft.protobuf.generated.RaftProtos.LogEntry other) {
+        if (other == org.yraft.protobuf.generated.RaftProtos.LogEntry.getDefaultInstance()) return this;
+        if (other.hasTerm()) {
+          setTerm(other.getTerm());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasData()) {
+          setData(other.getData());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.yraft.protobuf.generated.RaftProtos.LogEntry parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.yraft.protobuf.generated.RaftProtos.LogEntry) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional uint64 term = 1;
       private long term_ ;
+      /**
+       * <code>optional uint64 term = 1;</code>
+       */
       public boolean hasTerm() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       */
       public long getTerm() {
         return term_;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       */
       public Builder setTerm(long value) {
         bitField0_ |= 0x00000001;
         term_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional uint64 term = 1;</code>
+       */
       public Builder clearTerm() {
         bitField0_ = (bitField0_ & ~0x00000001);
         term_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional .LogEntry.EntryType type = 2;
       private org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
+      /**
+       * <code>optional .LogEntry.EntryType type = 2;</code>
+       */
       public boolean hasType() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional .LogEntry.EntryType type = 2;</code>
+       */
       public org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType getType() {
         return type_;
       }
+      /**
+       * <code>optional .LogEntry.EntryType type = 2;</code>
+       */
       public Builder setType(org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -4229,21 +5859,33 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .LogEntry.EntryType type = 2;</code>
+       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000002);
         type_ = org.yraft.protobuf.generated.RaftProtos.LogEntry.EntryType.UNKNOWN;
         onChanged();
         return this;
       }
-      
+
       // optional bytes data = 3;
       private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
       public boolean hasData() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
       public com.google.protobuf.ByteString getData() {
         return data_;
       }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
       public Builder setData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -4253,24 +5895,27 @@ public final class RaftProtos {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
       public Builder clearData() {
         bitField0_ = (bitField0_ & ~0x00000004);
         data_ = getDefaultInstance().getData();
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:LogEntry)
     }
-    
+
     static {
       defaultInstance = new LogEntry(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:LogEntry)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_VoteRequest_descriptor;
   private static
@@ -4306,7 +5951,7 @@ public final class RaftProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_LogEntry_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -4349,57 +5994,43 @@ public final class RaftProtos {
           internal_static_VoteRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VoteRequest_descriptor,
-              new java.lang.String[] { "Term", "CandidateId", "LastLogIndex", "LastLogTerm", },
-              org.yraft.protobuf.generated.RaftProtos.VoteRequest.class,
-              org.yraft.protobuf.generated.RaftProtos.VoteRequest.Builder.class);
+              new java.lang.String[] { "Term", "CandidateId", "LastLogIndex", "LastLogTerm", });
           internal_static_VoteResponse_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_VoteResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VoteResponse_descriptor,
-              new java.lang.String[] { "Term", "CandidateId", "VoteDecision", },
-              org.yraft.protobuf.generated.RaftProtos.VoteResponse.class,
-              org.yraft.protobuf.generated.RaftProtos.VoteResponse.Builder.class);
+              new java.lang.String[] { "Term", "CandidateId", "VoteDecision", });
           internal_static_AppendEntriesRequest_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_AppendEntriesRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AppendEntriesRequest_descriptor,
-              new java.lang.String[] { "Term", "LeaderId", "PrevLogIndex", "PrevLogTerm", "LeaderCommitIndex", "Entries", },
-              org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.class,
-              org.yraft.protobuf.generated.RaftProtos.AppendEntriesRequest.Builder.class);
+              new java.lang.String[] { "Term", "LeaderId", "PrevLogIndex", "PrevLogTerm", "LeaderCommitIndex", "Entries", });
           internal_static_AppendEntriesResponse_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_AppendEntriesResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_AppendEntriesResponse_descriptor,
-              new java.lang.String[] { "Term", "Status", "CandidateId", },
-              org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.class,
-              org.yraft.protobuf.generated.RaftProtos.AppendEntriesResponse.Builder.class);
+              new java.lang.String[] { "Term", "Status", "CandidateId", });
           internal_static_PutRequest_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_PutRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PutRequest_descriptor,
-              new java.lang.String[] { "Id", "Host", "Port", "Data", },
-              org.yraft.protobuf.generated.RaftProtos.PutRequest.class,
-              org.yraft.protobuf.generated.RaftProtos.PutRequest.Builder.class);
+              new java.lang.String[] { "Id", "Host", "Port", "Data", });
           internal_static_ClusterConfig_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_ClusterConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ClusterConfig_descriptor,
-              new java.lang.String[] { "Hosts", },
-              org.yraft.protobuf.generated.RaftProtos.ClusterConfig.class,
-              org.yraft.protobuf.generated.RaftProtos.ClusterConfig.Builder.class);
+              new java.lang.String[] { "Hosts", });
           internal_static_LogEntry_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_LogEntry_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_LogEntry_descriptor,
-              new java.lang.String[] { "Term", "Type", "Data", },
-              org.yraft.protobuf.generated.RaftProtos.LogEntry.class,
-              org.yraft.protobuf.generated.RaftProtos.LogEntry.Builder.class);
+              new java.lang.String[] { "Term", "Type", "Data", });
           return null;
         }
       };
@@ -4408,6 +6039,6 @@ public final class RaftProtos {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
